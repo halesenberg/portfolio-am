@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alessia Montalbano — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F4EE;
+    --paper-raised:#FCFBF7;
+    --ink:#1B1A17;
+    --lab:#2F4D3F;
+    --lab-bright:#3D6A55;
+    --coral:#C9603F;
+    --bronze:#A8895F;
+    --grey:#827C6D;
+    --line:#DDD7C8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--lab); color:var(--paper);}
+  a{color:inherit;}
+  .skip-link{position:absolute; left:-9999px;}
+  .skip-link:focus{left:1rem; top:1rem; background:var(--ink); color:var(--paper); padding:.5rem 1rem; z-index:999;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    padding: 5.5rem 6vw 5rem;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  @media (max-width:700px){ .hero{padding:3.5rem 5vw 3rem;} }
+
+  .hero-grain{
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(47,77,63,.10), transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(201,96,63,.09), transparent 40%);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative; max-width:1100px;}
+
+  .hero-eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--lab-bright);
+    display:flex; align-items:center; gap:.7rem;
+    margin-bottom:1.6rem;
+    opacity:0;
+    animation: rise .7s ease forwards;
+  }
+  .hero-eyebrow::before{content:""; width:28px; height:1px; background:var(--lab-bright);}
+
+  h1.hero-title{
+    font-family:'Source Serif 4', serif;
+    font-weight:500;
+    font-size:clamp(2.4rem, 5.4vw, 4.1rem);
+    line-height:1.08;
+    letter-spacing:-.01em;
+    max-width:920px;
+    margin-bottom:1.8rem;
+    opacity:0;
+    animation: rise .8s .08s ease forwards;
+  }
+  h1.hero-title .it{
+    font-style:italic;
+    color:var(--lab);
+    position:relative;
+  }
+  h1.hero-title .underline{
+    display:inline-block;
+    position:relative;
+  }
+  h1.hero-title .underline::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:.06em;
+    height:.1em;
+    background:var(--coral);
+    opacity:.5;
+    z-index:-1;
+  }
+
+  .hero-sub{
+    font-size:1.05rem;
+    color:var(--grey);
+    max-width:600px;
+    margin-bottom:2.6rem;
+    opacity:0;
+    animation: rise .8s .18s ease forwards;
+  }
+
+  .hero-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:2.4rem;
+    font-family:'JetBrains Mono', monospace;
+    font-size:.78rem;
+    color:var(--grey);
+    opacity:0;
+    animation: rise .8s .28s ease forwards;
+  }
+  .hero-meta strong{color:var(--ink); display:block; font-family:'Inter',sans-serif; font-weight:600; font-size:.85rem; margin-bottom:.15rem;}
+  .hero-meta a{text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:3px;}
+  .hero-meta a:hover{text-decoration-color:var(--coral); color:var(--coral);}
+
+  @keyframes rise{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  /* ===== NAV STRIP ===== */
+  .navstrip{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,244,238,.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    display:flex;
+    overflow-x:auto;
+    padding: 0 6vw;
+    gap: 0;
+    scrollbar-width:none;
+  }
+  .navstrip::-webkit-scrollbar{display:none;}
+  .navstrip a{
+    flex-shrink:0;
+    font-family:'JetBrains Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.04em;
+    text-decoration:none;
+    color:var(--grey);
+    padding: .9rem 1rem;
+    border-bottom:2px solid transparent;
+    white-space:nowrap;
+    transition: color .15s ease, border-color .15s ease;
+  }
+  .navstrip a:hover, .navstrip a:focus-visible{ color:var(--ink); }
+  .navstrip a.active{ color:var(--lab); border-color:var(--coral); }
+
+  /* ===== MAIN ===== */
+  main{ max-width:1100px; margin:0 auto; padding: 4.5rem 6vw 6rem; }
+  @media (max-width:700px){ main{padding:3rem 5vw 4rem;} }
+
+  .section-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--coral);
+    margin-bottom:.7rem;
+  }
+  .section-heading{
+    font-family:'Source Serif 4', serif;
+    font-weight:500;
+    font-size:clamp(1.5rem, 2.6vw, 2rem);
+    margin-bottom:2.6rem;
+    max-width:620px;
+  }
+
+  /* ===== Project Cards ===== */
+  .grid-projects{
+    display:grid;
+    gap:1.1rem;
+    margin-bottom:6rem;
+  }
+  .card{
+    position:relative;
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding: 2rem 2.1rem;
+    scroll-margin-top:5rem;
+    transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{
+    border-color:var(--lab-bright);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px -18px rgba(27,26,23,.25);
+  }
+  @media (max-width:700px){ .card{padding:1.5rem 1.4rem;} }
+
+  .card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:1rem;
+    margin-bottom:1rem;
+  }
+  .card-num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.74rem;
+    color:var(--bronze);
+    padding-top:.3rem;
+  }
+  .card h3{
+    font-family:'Source Serif 4', serif;
+    font-size:1.32rem;
+    font-weight:600;
+    line-height:1.3;
+    margin-bottom:.6rem;
+  }
+  .tag-row{ display:flex; flex-wrap:wrap; gap:.45rem; margin-bottom:1.1rem; }
+  .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.66rem;
+    letter-spacing:.02em;
+    text-transform:uppercase;
+    padding:.22rem .55rem;
+    border:1px solid var(--line);
+    border-radius:2px;
+    color:var(--grey);
+    background:var(--paper);
+  }
+  .tag.lab{ color:var(--lab); border-color:var(--lab-bright); }
+  .tag.coral{ color:var(--coral); border-color:var(--coral); }
+
+  .card p{ margin-bottom:.9rem; max-width:680px; }
+  .card ul{ margin:0 0 .9rem 1.15rem; max-width:680px; }
+  .card li{ margin-bottom:.4rem; }
+
+  .card .note{
+    font-size:.86rem;
+    color:var(--grey);
+    border-left:2px solid var(--coral);
+    padding-left:.9rem;
+    margin-top:1.1rem;
+  }
+
+  .specimen{
+    margin-top:1.2rem;
+    padding:1rem 1.2rem;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:4px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:.76rem;
+    color:var(--grey);
+    overflow-x:auto;
+  }
+  .specimen .sline{color:var(--ink);}
+  .specimen .scomment{color:var(--lab-bright);}
+
+  .links-row{ margin-top:1.3rem; display:flex; gap:1.2rem; flex-wrap:wrap; }
+  .links-row a{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.76rem;
+    text-decoration:none;
+    color:var(--ink);
+    display:flex; align-items:center; gap:.4rem;
+    border-bottom:1px solid var(--ink);
+    padding-bottom:.15rem;
+    transition: color .15s ease, border-color .15s ease;
+  }
+  .links-row a:hover{ color:var(--coral); border-color:var(--coral); }
+  .links-row a::after{ content:"→"; font-size:.85rem; }
+  .links-row a.placeholder{ color:var(--grey); border-color:var(--line); cursor:default; }
+  .links-row a.placeholder:hover{ color:var(--grey); border-color:var(--line); }
+  .links-row a.placeholder::after{ content:""; }
+
+  /* ===== Skills section ===== */
+  .skills-wrap{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap:1.2rem;
+    margin-bottom:6rem;
+  }
+  .skill-card{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:1.5rem 1.5rem 1.4rem;
+  }
+  .skill-card h4{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.7rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--lab);
+    margin-bottom:.9rem;
+  }
+  .skill-card ul{ list-style:none; }
+  .skill-card li{
+    font-size:.92rem;
+    padding:.4rem 0;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    gap:.6rem;
+    align-items:baseline;
+  }
+  .skill-card li:first-child{ border-top:none; }
+  .skill-card .yr{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.68rem;
+    color:var(--grey);
+    white-space:nowrap;
+  }
+  .skill-card li.expired .yr{ color:var(--coral); }
+  .skill-card li.expired .label::after{
+    content:" (expired)";
+    font-family:'JetBrains Mono', monospace;
+    font-size:.66rem;
+    color:var(--grey);
+  }
+
+  /* ===== Footer ===== */
+  footer.colophon{
+    border-top:1px solid var(--line);
+    padding: 2.4rem 6vw 3rem;
+    font-family:'JetBrains Mono', monospace;
+    font-size:.74rem;
+    color:var(--grey);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:1rem;
+  }
+  footer.colophon code{ background:var(--paper-raised); padding:.1rem .35rem; border-radius:3px; }
+
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="hero-grain" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Portfolio — 2026 edition</div>
+    <h1 class="hero-title">Work at the crossing of <span class="it">language</span>, <span class="underline">extended reality</span>, and <span class="it">research design</span>.</h1>
+    <p class="hero-sub">Alessia Montalbano — Digital Humanities, University of Pisa. Currently developing a VR application for A1 Italian language instruction, alongside coursework spanning Unity development, user research, NLP evaluation, and data storytelling.</p>
+    <div class="hero-meta">
+      <div><strong>Based in</strong> Pisa, Italy</div>
+      <div><strong>Contact</strong> <a href="mailto:alessia19mont@gmail.com">alessia19mont@gmail.com</a></div>
+      <div><strong>Elsewhere</strong> <a href="#">linkedin.com/in/[handle]</a></div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== NAV STRIP ===================== -->
+<nav class="navstrip" aria-label="Section navigation">
+  <a href="#thesis">00 · Thesis</a>
+  <a href="#unity">01 · Unity / C#</a>
+  <a href="#python">02 · Python OOP &amp; GUI</a>
+  <a href="#detaills">03 · DETAILLs internship</a>
+  <a href="#design">04 · User research</a>
+  <a href="#ai-essay">05 · AI ethics essay</a>
+  <a href="#datajourn">06 · Data journalism</a>
+  <a href="#mt">07 · MT evaluation</a>
+  <a href="#skills">Skills &amp; certifications</a>
+</nav>
+
+<main id="main">
+
+  <div class="section-label">— Index of work</div>
+  <h2 class="section-heading">Seven projects, one continuous thread: making complex systems legible — to learners, to listeners, to readers.</h2>
+
+  <div class="grid-projects">
+
+    <!-- ============ 00 — THESIS ============ -->
+    <div class="card" id="thesis">
+      <div class="card-top">
+        <h3><!-- TODO: insert exact thesis title -->[Thesis title]</h3>
+        <div class="card-num">00</div>
+      </div>
+      <div class="tag-row">
+        <span class="tag lab">In progress</span>
+        <span class="tag">Unity · C#</span>
+        <span class="tag">VR</span>
+        <span class="tag">Language pedagogy</span>
+      </div>
+      <p>Design and development of a virtual reality application for teaching Italian at A1 level to English-speaking learners. The work is carried out as a visiting student at <!-- TODO: lab name -->[lab name], Scuola Superiore Sant'Anna, Pisa, under the supervision of <!-- TODO: supervisor -->[Supervisor name].</p>
+      <p>The project combines Unity (C#) development, interaction design, and a solid grounding in Italian linguistics, applied to building immersive scenarios for L2 acquisition.</p>
+      <p class="note">To complete: specific learning objectives, pedagogical methodology, current development stage, screenshots or video of the prototype.</p>
+      <div class="links-row">
+        <a href="#" class="placeholder">Prototype demo / video</a>
+      </div>
+    </div>
+
+    <!-- ============ 01 — UNITY ============ -->
+    <div class="card" id="unity">
+      <div class="card-top">
+        <h3>Virtual environments — coursework and implementation</h3>
+        <div class="card-num">01</div>
+      </div>
+      <div class="tag-row">
+        <span class="tag lab">Unity</span>
+        <span class="tag">C#</span>
+        <span class="tag">Interaction design</span>
+      </div>
+      <p>Development of interactive 3D environments for the Virtual Environments course (grade 28/30), which laid the technical groundwork later applied to the thesis at Scuola Superiore Sant'Anna.</p>
+      <ul>
+        <li>Building 3D scenes and managing user interaction in Unity</li>
+        <li>C# scripting for game logic and environment interaction</li>
+        <li>Direct application to the VR language-learning prototype (see 00)</li>
+      </ul>
+      <p class="note">To complete: scene screenshots, code repository link, exam project details.</p>
+    </div>
+
+    <!-- ============ 02 — PYTHON ============ -->
+    <div class="card" id="python">
+      <div class="card-top">
+        <h3>Digital pantry manager — Python OOP &amp; GUI</h3>
+        <div class="card-num">02</div>
+      </div>
+      <div class="tag-row">
+        <span class="tag lab">Python</span>
+        <span class="tag">OOP</span>
+        <span class="tag">Tkinter GUI</span>
+      </div>
+      <p>Two assignments for the Programming and Data Analysis course (grade 27/30), evolving from a procedural implementation into a fully object-oriented system with a graphical interface.</p>
+      <ul>
+        <li><strong>Assignment 2</strong> — procedural pantry management: creating, adding, and removing ingredients, calorie and cost calculation, file read/write, with automated tests and explicit exception handling (<code>TypeError</code>, <code>ValueError</code>, <code>KeyError</code>)</li>
+        <li><strong>Assignment 3</strong> — refactored into classes (<code>Dispensa</code>, <code>Ingrediente</code>, <code>Ricetta</code>) with dunder methods (<code>__eq__</code>, <code>__str__</code>, <code>__add__</code>) and a Tkinter GUI for interactive ingredient and recipe management</li>
+      </ul>
+      <div class="specimen"><span class="scomment"># ricetta.py — operator overloading example</span><br>
+<span class="sline">def __add__(self, altroingredientequant):</span><br>
+&nbsp;&nbsp;<span class="sline">if type(altroingredientequant) is not IngredienteQuantita:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="sline">raise TypeError("the ingredient is not of the correct type")</span><br>
+&nbsp;&nbsp;<span class="sline">...</span><br>
+&nbsp;&nbsp;<span class="sline">return self</span></div>
+      <p class="note">To complete: GitHub repository link (recommended for both assignments), screenshot of the running GUI.</p>
+    </div>
+
+    <!-- ============ 03 — DETAILLS INTERNSHIP ============ -->
+    <div class="card" id="detaills">
+      <div class="card-top">
+        <h3>Course content design — DETAILLs Living Lab</h3>
+        <div class="card-num">03</div>
+      </div>
+      <div class="tag-row">
+        <span class="tag lab">Instructional design</span>
+        <span class="tag">Tableau</span>
+        <span class="tag coral">Erasmus+ project</span>
+      </div>
+      <p>150-hour internship (Mar–Jul 2025) at the <a href="https://www.detaills.eu/" target="_blank" rel="noopener">DETAILLs Living Lab</a>, University of Pisa — an Erasmus+ project (DEsign Tools of Artificial Intelligence in Sustainability Living LabS) building curriculum and training materials on AI-driven sustainable design, under the supervision of Prof. Filippo Chiarello.</p>
+      <p>Beyond the literature review and seminar work, the internship's core deliverable was building actual course content for what has since become a university-level course: video lectures, infographics, interactive elements, and interactive maps built in Tableau — the same tool later applied to the data journalism project below.</p>
+      <ul>
+        <li>Researched and structured pedagogical content on serious games, AI, and sustainable design for an online course, combining literature review (top-down/bottom-up approaches) with tools including Moodle, GitHub, Tableau, and Scimago</li>
+        <li>Produced video lectures and infographics translating technical AI/sustainability concepts into accessible course material</li>
+        <li>Built interactive Tableau maps and elements integrated into the course's e-learning platform</li>
+        <li>Took part in weekly lab seminars with project partners across the DETAILLs consortium (Pisa, Zagreb, and other partner institutions)</li>
+      </ul>
+      <p class="note">To complete: link to the live DETAILLs course module, if publicly accessible, or screenshots of the infographics/interactive maps produced.</p>
+      <div class="links-row">
+        <a href="https://www.detaills.eu/" target="_blank" rel="noopener">DETAILLs project site</a>
+      </div>
+    </div>
+
+    <!-- ============ 04 — USER RESEARCH ============ -->
+    <div class="card" id="design">
+      <div class="card-top">
+        <h3>Korova Milk Bar — Desirability &amp; Feasibility Report</h3>
+        <div class="card-num">04</div>
+      </div>
+      <div class="tag-row">
+        <span class="tag lab">Design thinking</span>
+        <span class="tag">User research</span>
+        <span class="tag">Project design</span>
+      </div>
+      <p>Group project for Project Design and Management for Data Science (Prof. Filippo Chiarello &amp; Chiara Lelli), tackling the visibility problem faced by emerging musicians in a $26B global market — structured across a full Desirability and Feasibility cycle.</p>
+      <ul>
+        <li>User research: brainstorming, role-storming, 5 Whys root-cause analysis, interviews, a 10-question survey</li>
+        <li>Five user personas mapped via empathy maps (vinyl collectors, songwriters, emerging musicians, independent label owners, hidden-gem seekers), evaluated with SWOT analysis and Maslow's hierarchy</li>
+        <li>Need prioritisation via a number/importance/confidence scoring matrix across all five user groups</li>
+        <li>Feasibility phase: technology ideation (How-Now-Wow-Huh?-Ciao matrix, fishbone diagram, Google Trends and dataset analysis), narrowed to three candidate solutions</li>
+        <li>Validated solutions through real pretotyping — A/B testing physical vs. digital concert postcards, user feedback collection — assessed with the Fogg Behaviour Model and an Ishikawa 5M analysis</li>
+        <li>Final solution (digital concert postcards with QR-linked content) selected via Pickcharts and NUF Test scoring as the highest-payoff, lowest-difficulty option</li>
+      </ul>
+      <p class="note">To complete: link to the full final report PDF, if shareable externally.</p>
+    </div>
+
+    <!-- ============ 05 — AI ESSAY ============ -->
+    <div class="card" id="ai-essay">
+      <div class="card-top">
+        <h3>Unveiling the Complexities of Artificial Intelligence</h3>
+        <div class="card-num">05</div>
+      </div>
+      <div class="tag-row">
+        <span class="tag lab">AI ethics</span>
+        <span class="tag">Algorithmic bias</span>
+        <span class="tag">Critical essay</span>
+      </div>
+      <p>A critical essay on the structural limits of AI systems in making ethical and moral decisions. The argument moves through DARPA's three "waves" of AI, the problem of opaque "black box" systems, and a review of documented cases of algorithmic bias in gender classification and language models.</p>
+      <ul>
+        <li>Analysis of bias sources across the algorithmic chain (training data, algorithmic focus, output)</li>
+        <li>Critical discussion of AI anthropomorphisation and "ethics washing" narratives in the tech industry</li>
+        <li>Extensive academic bibliography (Hinton &amp; Salakhutdinov, Scharre et al., DARPA, JSTOR sources)</li>
+      </ul>
+      <p class="note">Relevant to research contexts involving behavioural modelling and explainable AI (XAI).</p>
+    </div>
+
+    <!-- ============ 06 — DATA JOURNALISM ============ -->
+    <div class="card" id="datajourn">
+      <div class="card-top">
+        <h3>Oggi a tavola, dieta mediterranea</h3>
+        <div class="card-num">06</div>
+      </div>
+      <div class="tag-row">
+        <span class="tag lab">Data journalism</span>
+        <span class="tag">Tableau</span>
+        <span class="tag">Group work</span>
+      </div>
+      <p>Data journalism project built with Giacomo Fidone and Valentina Galli. A multimedia article critically dismantling the myth of the Mediterranean diet as an automatically healthy model, grounded in IHME data on dietary risk factors in Italy.</p>
+      <ul>
+        <li>Interactive Tableau dashboards embedded directly in the page</li>
+        <li>Original interview with a nutrition expert</li>
+        <li>Historical framing (Ancel Keys, 1950s) and critique of national marketing narratives</li>
+      </ul>
+      <p class="note">To complete: link to the live page if hosted, or dashboard screenshots.</p>
+    </div>
+
+    <!-- ============ 07 — MT EVALUATION ============ -->
+    <div class="card" id="mt">
+      <div class="card-top">
+        <h3>Semi-automatic evaluation of machine translation systems</h3>
+        <div class="card-num">07</div>
+      </div>
+      <div class="tag-row">
+        <span class="tag lab">NLP</span>
+        <span class="tag">Computational linguistics</span>
+        <span class="tag">RU → IT</span>
+      </div>
+      <p>Report for the Italian Linguistics course (Prof. Mirko Tavosanis) comparing Google Translate, DeepL, and ChatGPT-4 on a Russian-to-Italian translation of an institutional news text, combining automatic metrics (BLEU, F-Measure, TER) with a three-dimension qualitative scoring grid.</p>
+      <ul>
+        <li>Blind evaluation conducted independently on anonymised translations, to reduce cognitive bias</li>
+        <li>Scoring grid covering semantic fidelity, register/genre adequacy, and formal correctness</li>
+        <li>Result: ChatGPT-4 most natural stylistically, DeepL most balanced terminologically, Google Translate penalised by literal calques</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ============ SKILLS & CERTIFICATIONS ============ -->
+  <div id="skills">
+    <div class="section-label">— Reference</div>
+    <h2 class="section-heading">Skills &amp; certifications</h2>
+
+    <div class="skills-wrap">
+      <div class="skill-card">
+        <h4>Programming</h4>
+        <ul>
+          <li><span class="label">Python (procedural &amp; OOP)</span></li>
+          <li><span class="label">C# (Unity)</span></li>
+          <li><span class="label">JavaScript</span></li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h4>XR &amp; data tools</h4>
+        <ul>
+          <li><span class="label">Unity</span></li>
+          <li><span class="label">Tableau</span></li>
+          <li><span class="label">Adobe CC suite</span></li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h4>Certifications</h4>
+        <ul>
+          <li class="expired"><span class="label">Google Ads Search</span><span class="yr">2023</span></li>
+          <li class="expired"><span class="label">Google Ads Measurement</span><span class="yr">2023</span></li>
+        </ul>
+        <p class="note" style="margin-top:1rem;">Certifications shown reflect skills acquired through coursework in Technologies for Web Marketing; both have since lapsed and are listed for completeness, not as current credentials.</p>
+      </div>
+      <div class="skill-card">
+        <h4>Languages</h4>
+        <ul>
+          <li><span class="label">Italian</span><span class="yr">native</span></li>
+          <li><span class="label">English</span><span class="yr">C1</span></li>
+          <li><span class="label">Russian</span><span class="yr">B2</span></li>
+          <li><span class="label">French</span><span class="yr">A2</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="colophon">
+  <span>Last updated: <!-- TODO: date -->[day month year]</span>
+  <span>Single static file, no build step. Edit directly in <code>index.html</code> — every section is commented.</span>
+</footer>
+
+<script>
+  // Highlight active nav section on scroll
+  const links = document.querySelectorAll('.navstrip a');
+  const sections = [...links].map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+  function onScroll(){
+    let activeIdx = 0;
+    sections.forEach((sec, i) => {
+      if (sec.getBoundingClientRect().top < 140) activeIdx = i;
+    });
+    links.forEach(l => l.classList.remove('active'));
+    if (links[activeIdx]) links[activeIdx].classList.add('active');
+  }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+</script>
+
+</body>
+</html>
