@@ -3,242 +3,206 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alessia Montalbano — Portfolio</title>
+<title>Alessia Montalbano | Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#F6F4EE;
-    --paper-raised:#FCFBF7;
-    --ink:#1B1A17;
-    --lab:#2F4D3F;
-    --lab-bright:#3D6A55;
-    --coral:#C9603F;
-    --bronze:#A8895F;
-    --grey:#827C6D;
-    --line:#DDD7C8;
+    --bg:#070B26;
+    --bg-2:#0D1440;
+    --panel:#101A55;
+    --blue:#2F6BFF;
+    --cyan:#34E0FF;
+    --green:#39FF14;
+    --pink:#FF2BD6;
+    --text:#D9E6FF;
+    --dim:#8EA2D9;
+    --px:4px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
   body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Inter',sans-serif;
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
+    background:var(--bg);
+    background-image:
+      radial-gradient(2px 2px at 20px 30px, #ffffff 50%, transparent 51%),
+      radial-gradient(2px 2px at 140px 90px, var(--cyan) 50%, transparent 51%),
+      radial-gradient(2px 2px at 80px 160px, var(--pink) 50%, transparent 51%),
+      radial-gradient(2px 2px at 200px 20px, #ffffff 50%, transparent 51%);
+    background-size:240px 200px;
+    color:var(--text);
+    font-family:'VT323', monospace;
+    font-size:1.35rem;
+    line-height:1.35;
     overflow-x:hidden;
+    image-rendering:pixelated;
   }
-  ::selection{background:var(--lab); color:var(--paper);}
-  a{color:inherit;}
+  body::after{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:200;
+    background:repeating-linear-gradient(to bottom, rgba(0,0,0,.18) 0 1px, transparent 1px 3px);
+  }
+  ::selection{background:var(--pink); color:#fff;}
+  a{color:var(--cyan);}
+  a:hover{color:var(--green);}
   .skip-link{position:absolute; left:-9999px;}
-  .skip-link:focus{left:1rem; top:1rem; background:var(--ink); color:var(--paper); padding:.5rem 1rem; z-index:999;}
+  .skip-link:focus{left:1rem; top:1rem; background:var(--green); color:#000; padding:.5rem 1rem; z-index:999;}
 
   @media (prefers-reduced-motion: reduce){
-    *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
+    *{animation:none !important; transition:none !important;}
   }
+
+  .pf{font-family:'Press Start 2P', monospace; line-height:1.6;}
 
   /* ===== HERO ===== */
   .hero{
     position:relative;
-    padding: 5.5rem 6vw 5rem;
-    border-bottom:1px solid var(--line);
-    overflow:hidden;
+    padding:4rem 6vw 4rem;
+    border-bottom:var(--px) solid var(--blue);
+    background:linear-gradient(180deg, rgba(47,107,255,.18), transparent 70%);
   }
-  @media (max-width:700px){ .hero{padding:3.5rem 5vw 3rem;} }
-
-  .hero-grain{
-    position:absolute; inset:0;
-    background-image:
-      radial-gradient(circle at 15% 20%, rgba(47,77,63,.10), transparent 45%),
-      radial-gradient(circle at 85% 75%, rgba(201,96,63,.09), transparent 40%);
-    pointer-events:none;
-  }
-  .hero-inner{position:relative; max-width:1100px;}
-
-  .hero-eyebrow{
-    font-family:'JetBrains Mono', monospace;
-    font-size:.72rem;
-    letter-spacing:.16em;
-    text-transform:uppercase;
-    color:var(--lab-bright);
-    display:flex; align-items:center; gap:.7rem;
+  .hero-inner{max-width:1100px; margin:0 auto;}
+  .insert-coin{
+    font-family:'Press Start 2P', monospace;
+    font-size:.65rem;
+    color:var(--green);
+    letter-spacing:.08em;
     margin-bottom:1.6rem;
-    opacity:0;
-    animation: rise .7s ease forwards;
+    animation:blink 1.1s steps(2, start) infinite;
   }
-  .hero-eyebrow::before{content:""; width:28px; height:1px; background:var(--lab-bright);}
+  @keyframes blink{ 50%{opacity:0;} }
+
+  .hud{
+    display:flex; flex-wrap:wrap; gap:1.2rem 2.4rem;
+    font-family:'Press Start 2P', monospace;
+    font-size:.6rem;
+    color:var(--dim);
+    margin-bottom:2rem;
+  }
+  .hud b{color:var(--pink); font-weight:400;}
+  .hud .hearts{color:var(--pink); letter-spacing:.2em;}
 
   h1.hero-title{
-    font-family:'Source Serif 4', serif;
-    font-weight:500;
-    font-size:clamp(2.4rem, 5.4vw, 4.1rem);
-    line-height:1.08;
-    letter-spacing:-.01em;
-    max-width:920px;
+    font-family:'Press Start 2P', monospace;
+    font-weight:400;
+    font-size:clamp(1.15rem, 3.2vw, 2.1rem);
+    line-height:1.7;
+    max-width:960px;
     margin-bottom:1.8rem;
-    opacity:0;
-    animation: rise .8s .08s ease forwards;
+    text-shadow:4px 4px 0 var(--blue);
   }
-  h1.hero-title .it{
-    font-style:italic;
-    color:var(--lab);
-    position:relative;
-  }
-  h1.hero-title .underline{
-    display:inline-block;
-    position:relative;
-  }
-  h1.hero-title .underline::after{
-    content:"";
-    position:absolute;
-    left:0; right:0; bottom:.06em;
-    height:.1em;
-    background:var(--coral);
-    opacity:.5;
-    z-index:-1;
-  }
+  h1.hero-title .g{color:var(--green); text-shadow:4px 4px 0 #0a4d00;}
+  h1.hero-title .p{color:var(--pink); text-shadow:4px 4px 0 #5a0b4d;}
+  h1.hero-title .c{color:var(--cyan); text-shadow:4px 4px 0 #0b4a63;}
 
-  .hero-sub{
-    font-size:1.05rem;
-    color:var(--grey);
-    max-width:600px;
-    margin-bottom:2.6rem;
-    opacity:0;
-    animation: rise .8s .18s ease forwards;
-  }
+  .hero-grid{display:grid; grid-template-columns:1fr auto; gap:2rem; align-items:center;}
+  @media (max-width:760px){ .hero-grid{grid-template-columns:1fr;} .sprite-wrap{display:none;} }
+  .hero-sub{font-size:1.5rem; color:var(--text); max-width:680px; margin-bottom:2rem;}
+  .hero-sub em{color:var(--green); font-style:normal;}
 
-  .hero-meta{
-    display:flex;
-    flex-wrap:wrap;
-    gap:2.4rem;
-    font-family:'JetBrains Mono', monospace;
-    font-size:.78rem;
-    color:var(--grey);
-    opacity:0;
-    animation: rise .8s .28s ease forwards;
-  }
-  .hero-meta strong{color:var(--ink); display:block; font-family:'Inter',sans-serif; font-weight:600; font-size:.85rem; margin-bottom:.15rem;}
-  .hero-meta a{text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:3px;}
-  .hero-meta a:hover{text-decoration-color:var(--coral); color:var(--coral);}
+  .hero-meta{display:flex; flex-wrap:wrap; gap:1.2rem 2.4rem;}
+  .hero-meta div{font-size:1.25rem; color:var(--dim);}
+  .hero-meta strong{display:block; font-family:'Press Start 2P', monospace; font-weight:400; font-size:.6rem; color:var(--cyan); margin-bottom:.45rem;}
+  .hero-meta a{color:var(--text); text-decoration:none; border-bottom:2px dashed var(--pink);}
+  .hero-meta a:hover{color:var(--green); border-color:var(--green);}
 
-  @keyframes rise{
-    from{opacity:0; transform:translateY(14px);}
-    to{opacity:1; transform:translateY(0);}
-  }
+  .sprite-wrap{padding:1rem; border:var(--px) solid var(--pink); background:var(--bg-2); box-shadow:8px 8px 0 var(--blue);}
+  .sprite{display:block; width:176px; height:auto; image-rendering:pixelated; animation:bob 1.4s steps(2, end) infinite;}
+  @keyframes bob{ 50%{transform:translateY(-6px);} }
 
-  /* ===== NAV STRIP ===== */
+  /* ===== NAV ===== */
   .navstrip{
     position:sticky; top:0; z-index:50;
-    background:rgba(246,244,238,.92);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
-    display:flex;
-    overflow-x:auto;
-    padding: 0 6vw;
-    gap: 0;
-    scrollbar-width:none;
+    background:var(--bg-2);
+    border-bottom:var(--px) solid var(--pink);
+    display:flex; overflow-x:auto; padding:0 4vw; scrollbar-width:none;
   }
   .navstrip::-webkit-scrollbar{display:none;}
   .navstrip a{
     flex-shrink:0;
-    font-family:'JetBrains Mono', monospace;
-    font-size:.72rem;
-    letter-spacing:.04em;
+    font-family:'Press Start 2P', monospace;
+    font-size:.55rem;
     text-decoration:none;
-    color:var(--grey);
-    padding: .9rem 1rem;
-    border-bottom:2px solid transparent;
+    color:var(--dim);
+    padding:1.1rem .9rem;
     white-space:nowrap;
-    transition: color .15s ease, border-color .15s ease;
   }
-  .navstrip a:hover, .navstrip a:focus-visible{ color:var(--ink); }
-  .navstrip a.active{ color:var(--lab); border-color:var(--coral); }
+  .navstrip a:hover, .navstrip a:focus-visible{color:var(--green);}
+  .navstrip a.active{color:#000; background:var(--green);}
 
   /* ===== MAIN ===== */
-  main{ max-width:1100px; margin:0 auto; padding: 4.5rem 6vw 6rem; }
-  @media (max-width:700px){ main{padding:3rem 5vw 4rem;} }
+  main{max-width:1100px; margin:0 auto; padding:4rem 5vw 5rem;}
 
   .section-label{
-    font-family:'JetBrains Mono', monospace;
-    font-size:.72rem;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    color:var(--coral);
-    margin-bottom:.7rem;
-  }
-  .section-heading{
-    font-family:'Source Serif 4', serif;
-    font-weight:500;
-    font-size:clamp(1.5rem, 2.6vw, 2rem);
-    margin-bottom:2.6rem;
-    max-width:620px;
-  }
-
-  /* ===== Project Cards ===== */
-  .grid-projects{
-    display:grid;
-    gap:1.1rem;
-    margin-bottom:6rem;
-  }
-  .card{
-    position:relative;
-    background:var(--paper-raised);
-    border:1px solid var(--line);
-    border-radius:6px;
-    padding: 2rem 2.1rem;
-    scroll-margin-top:5rem;
-    transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
-  }
-  .card:hover{
-    border-color:var(--lab-bright);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 28px -18px rgba(27,26,23,.25);
-  }
-  @media (max-width:700px){ .card{padding:1.5rem 1.4rem;} }
-
-  .card-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:1rem;
+    font-family:'Press Start 2P', monospace;
+    font-size:.65rem;
+    color:var(--pink);
     margin-bottom:1rem;
   }
-  .card-num{
-    font-family:'JetBrains Mono', monospace;
-    font-size:.74rem;
-    color:var(--bronze);
-    padding-top:.3rem;
+  .section-label::before{content:"> ";color:var(--green);}
+  .section-heading{
+    font-family:'Press Start 2P', monospace;
+    font-weight:400;
+    font-size:clamp(.85rem, 1.9vw, 1.2rem);
+    line-height:1.8;
+    margin-bottom:2.6rem;
+    max-width:760px;
   }
-  .card h3{
-    font-family:'Source Serif 4', serif;
-    font-size:1.32rem;
-    font-weight:600;
-    line-height:1.3;
-    margin-bottom:.6rem;
-  }
-  .tag-row{ display:flex; flex-wrap:wrap; gap:.45rem; margin-bottom:1.1rem; }
-  .tag{
-    font-family:'JetBrains Mono', monospace;
-    font-size:.66rem;
-    letter-spacing:.02em;
-    text-transform:uppercase;
-    padding:.22rem .55rem;
-    border:1px solid var(--line);
-    border-radius:2px;
-    color:var(--grey);
-    background:var(--paper);
-  }
-  .tag.lab{ color:var(--lab); border-color:var(--lab-bright); }
-  .tag.coral{ color:var(--coral); border-color:var(--coral); }
 
-  .card p{ margin-bottom:.9rem; max-width:680px; }
-  .card ul{ margin:0 0 .9rem 1.15rem; max-width:680px; }
-  .card li{ margin-bottom:.4rem; }
+  /* ===== Cards (levels) ===== */
+  .grid-projects{display:grid; gap:2.2rem; margin-bottom:5rem;}
+  .card{
+    position:relative;
+    background:var(--panel);
+    border:var(--px) solid var(--blue);
+    box-shadow:8px 8px 0 var(--pink);
+    padding:2rem 2rem 1.8rem;
+    scroll-margin-top:5rem;
+    transition:transform .12s steps(2), box-shadow .12s steps(2);
+  }
+  .card:hover{transform:translate(-4px,-4px); box-shadow:12px 12px 0 var(--green);}
+  .card.boss{border-color:var(--green); box-shadow:8px 8px 0 var(--blue);}
+  .card.boss:hover{box-shadow:12px 12px 0 var(--pink);}
+  @media (max-width:700px){ .card{padding:1.4rem 1.2rem;} }
+
+  .card-top{display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; margin-bottom:1.1rem;}
+  .card-num{
+    font-family:'Press Start 2P', monospace;
+    font-size:.6rem;
+    background:var(--pink); color:#000;
+    padding:.55rem .6rem;
+    white-space:nowrap;
+  }
+  .boss .card-num{background:var(--green);}
+  .card h3{
+    font-family:'Press Start 2P', monospace;
+    font-weight:400;
+    font-size:clamp(.8rem, 1.6vw, 1.05rem);
+    line-height:1.7;
+    color:#fff;
+  }
+  .tag-row{display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.2rem;}
+  .tag{
+    font-family:'Press Start 2P', monospace;
+    font-size:.5rem;
+    padding:.4rem .5rem;
+    border:2px solid var(--dim);
+    color:var(--dim);
+  }
+  .tag.lab{color:var(--green); border-color:var(--green);}
+  .tag.coral{color:var(--pink); border-color:var(--pink);}
+  .tag.cy{color:var(--cyan); border-color:var(--cyan);}
+
+  .card p{margin-bottom:.9rem; max-width:760px; font-size:1.4rem;}
+  .card ul{list-style:none; margin:0 0 .9rem 0; max-width:760px;}
+  .card li{margin-bottom:.5rem; padding-left:1.5rem; position:relative; font-size:1.4rem;}
+  .card li::before{content:""; position:absolute; left:0; top:.5em; width:.6rem; height:.6rem; background:var(--green);}
+  .card strong{color:var(--cyan); font-weight:400;}
+  .card code{color:var(--green); background:var(--bg); padding:0 .3rem;}
 
   .card .note{
-    font-size:.86rem;
-    color:var(--grey);
-    border-left:2px solid var(--coral);
+    font-size:1.2rem;
+    color:var(--dim);
+    border-left:4px solid var(--pink);
     padding-left:.9rem;
     margin-top:1.1rem;
   }
@@ -246,94 +210,84 @@
   .specimen{
     margin-top:1.2rem;
     padding:1rem 1.2rem;
-    background:var(--paper);
-    border:1px solid var(--line);
-    border-radius:4px;
-    font-family:'JetBrains Mono', monospace;
-    font-size:.76rem;
-    color:var(--grey);
+    background:var(--bg);
+    border:2px solid var(--blue);
+    font-size:1.2rem;
+    color:var(--dim);
     overflow-x:auto;
   }
-  .specimen .sline{color:var(--ink);}
-  .specimen .scomment{color:var(--lab-bright);}
+  .specimen .sline{color:var(--text);}
+  .specimen .scomment{color:var(--green);}
 
-  .links-row{ margin-top:1.3rem; display:flex; gap:1.2rem; flex-wrap:wrap; }
+  .links-row{margin-top:1.3rem; display:flex; gap:1rem; flex-wrap:wrap;}
   .links-row a{
-    font-family:'JetBrains Mono', monospace;
-    font-size:.76rem;
+    font-family:'Press Start 2P', monospace;
+    font-size:.55rem;
     text-decoration:none;
-    color:var(--ink);
-    display:flex; align-items:center; gap:.4rem;
-    border-bottom:1px solid var(--ink);
-    padding-bottom:.15rem;
-    transition: color .15s ease, border-color .15s ease;
+    color:#000; background:var(--green);
+    padding:.8rem .9rem;
+    box-shadow:4px 4px 0 var(--pink);
   }
-  .links-row a:hover{ color:var(--coral); border-color:var(--coral); }
-  .links-row a::after{ content:"→"; font-size:.85rem; }
-  .links-row a.placeholder{ color:var(--grey); border-color:var(--line); cursor:default; }
-  .links-row a.placeholder:hover{ color:var(--grey); border-color:var(--line); }
-  .links-row a.placeholder::after{ content:""; }
+  .links-row a:hover{background:var(--cyan); transform:translate(2px,2px); box-shadow:2px 2px 0 var(--pink);}
+  .links-row a.placeholder{background:transparent; color:var(--dim); border:2px dashed var(--dim); box-shadow:none; cursor:default;}
 
-  /* ===== Skills section ===== */
-  .skills-wrap{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap:1.2rem;
-    margin-bottom:6rem;
+  /* ===== Score board (thesis stats) ===== */
+  .scoreboard{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+    gap:1rem; margin:1.4rem 0 1.4rem;
   }
-  .skill-card{
-    background:var(--paper-raised);
-    border:1px solid var(--line);
-    border-radius:6px;
-    padding:1.5rem 1.5rem 1.4rem;
-  }
-  .skill-card h4{
-    font-family:'JetBrains Mono', monospace;
-    font-size:.7rem;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--lab);
-    margin-bottom:.9rem;
-  }
-  .skill-card ul{ list-style:none; }
-  .skill-card li{
-    font-size:.92rem;
-    padding:.4rem 0;
-    border-top:1px solid var(--line);
-    display:flex;
-    justify-content:space-between;
-    gap:.6rem;
-    align-items:baseline;
-  }
-  .skill-card li:first-child{ border-top:none; }
-  .skill-card .yr{
-    font-family:'JetBrains Mono', monospace;
-    font-size:.68rem;
-    color:var(--grey);
-    white-space:nowrap;
-  }
-  .skill-card li.expired .yr{ color:var(--coral); }
-  .skill-card li.expired .label::after{
-    content:" (expired)";
-    font-family:'JetBrains Mono', monospace;
-    font-size:.66rem;
-    color:var(--grey);
-  }
+  .stat{background:var(--bg); border:var(--px) solid var(--cyan); padding:1rem .8rem; text-align:center;}
+  .stat .val{font-family:'Press Start 2P', monospace; font-size:1.25rem; color:var(--green); text-shadow:3px 3px 0 #0a4d00; margin-bottom:.7rem;}
+  .stat:nth-child(even) .val{color:var(--pink); text-shadow:3px 3px 0 #5a0b4d;}
+  .stat .lbl{font-size:1.1rem; color:var(--dim); line-height:1.15;}
+
+  .scenes{display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1.2rem; margin:1.2rem 0;}
+  .scene{border:2px dashed var(--blue); padding:.8rem; font-size:1.25rem;}
+  .scene b{display:block; font-family:'Press Start 2P', monospace; font-weight:400; font-size:.55rem; color:var(--pink); margin-bottom:.5rem;}
+
+  .scene img{
+  display:block; width:100%; height:auto;
+  aspect-ratio:16/9; object-fit:cover;
+  border:var(--px) solid var(--cyan);
+  margin-bottom:.8rem;
+  image-rendering:auto;
+}
+.video-frame{
+  margin:1.4rem 0;
+  border:var(--px) solid var(--pink);
+  box-shadow:8px 8px 0 var(--blue);
+  background:var(--bg);
+  max-width:760px;
+}
+.video-frame video{display:block; width:100%; height:auto;}
+.video-frame .caption{
+  font-family:'Press Start 2P', monospace;
+  font-size:.5rem; color:var(--dim);
+  padding:.8rem; margin:0;
+}
+
+  /* ===== Skills ===== */
+  .skills-wrap{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1.4rem; margin-bottom:5rem;}
+  .skill-card{background:var(--panel); border:var(--px) solid var(--blue); box-shadow:6px 6px 0 var(--pink); padding:1.4rem;}
+  .skill-card h4{font-family:'Press Start 2P', monospace; font-weight:400; font-size:.6rem; color:var(--green); margin-bottom:1rem;}
+  .skill-card ul{list-style:none;}
+  .skill-card li{font-size:1.3rem; padding:.35rem 0; border-top:2px dotted var(--blue); display:flex; justify-content:space-between; gap:.6rem; align-items:baseline;}
+  .skill-card li:first-child{border-top:none;}
+  .skill-card .yr{font-size:1.1rem; color:var(--dim); white-space:nowrap;}
+  .skill-card li.expired .yr{color:var(--pink);}
+  .skill-card li.expired .label::after{content:" (expired)"; font-size:1.05rem; color:var(--dim);}
+  .skill-card .note{font-size:1.1rem; color:var(--dim); margin-top:1rem; border-left:4px solid var(--pink); padding-left:.7rem;}
 
   /* ===== Footer ===== */
   footer.colophon{
-    border-top:1px solid var(--line);
-    padding: 2.4rem 6vw 3rem;
-    font-family:'JetBrains Mono', monospace;
-    font-size:.74rem;
-    color:var(--grey);
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:1rem;
+    border-top:var(--px) solid var(--blue);
+    padding:2rem 6vw 3rem;
+    font-size:1.15rem;
+    color:var(--dim);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem;
   }
-  footer.colophon code{ background:var(--paper-raised); padding:.1rem .35rem; border-radius:3px; }
-
+  footer.colophon .gameover{font-family:'Press Start 2P', monospace; font-size:.6rem; color:var(--pink);}
+  footer.colophon code{color:var(--green);}
 </style>
 </head>
 <body>
@@ -341,63 +295,149 @@
 
 <!-- ===================== HERO ===================== -->
 <header class="hero">
-  <div class="hero-grain" aria-hidden="true"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow">Portfolio — 2026 edition</div>
-    <h1 class="hero-title">Work at the crossing of <span class="it">language</span>, <span class="underline">extended reality</span>, and <span class="it">research design</span>.</h1>
-    <p class="hero-sub">Alessia Montalbano — Digital Humanities, University of Pisa. Currently developing a VR application for A1 Italian language instruction, alongside coursework spanning Unity development, user research, NLP evaluation, and data storytelling.</p>
-    <div class="hero-meta">
-      <div><strong>Based in</strong> Pisa, Italy</div>
-      <div><strong>Contact</strong> <a href="mailto:alessia19mont@gmail.com">alessia19mont@gmail.com</a></div>
-      <div><strong>Elsewhere</strong> <a href="#">linkedin.com/in/[handle]</a></div>
+    <div class="insert-coin">PRESS START</div>
+    <div class="hud">
+        <div>CANDIDATE <b>ALESSIA MONTALBANO</b></div>
+        <div>LIVES <b>relocating in Groningen, Netherlands</b><span class="hearts">&#9632;&#9632;&#9632;</span></div>
+        <div>MASTER'S DEGREE OBTAINED ON <b>October 15th, 2026</b></div>
+        <div>SCORE <b>109/110</b></div>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <h1 class="hero-title">Work at the crossing of <span class="g">language</span>, <span class="p">extended reality</span>, and <span class="c">research design</span>.</h1>
+        <p class="hero-sub">Alessia Montalbano, Master's Degree in Digital Humanities, University of Pisa. I design, build and test immersive reality experiences for Meta Quest 2. My thesis, <em>ItalianVRExperience</em>, is a complete Unity VR game for absolute beginners of Italian, with speech recognition integration (Whisper), an AI grammar tutor (Ollama/Mistral) and a user study conducted on 15 british participants.</p>
+        <div class="hero-meta">
+          <div><strong>DEVELOPED WHILE IN</strong> Pisa, Italy</div>
+          <div><strong>CONTACT</strong> <a href="mailto:alessia19mont@gmail.com">alessia19mont@gmail.com</a></div>
+          <div>
+              <strong>LINKS</strong>
+              <a href="https://www.linkedin.com/in/halesenberg/" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="https://github.com/halesenberg" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pixel VR headset sprite, drawn with rects -->
+      <div class="sprite-wrap" aria-hidden="true">
+        <svg class="sprite" viewBox="0 0 22 16" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+          <!-- strap -->
+          <rect x="2" y="5" width="2" height="4" fill="#2F6BFF"/>
+          <rect x="18" y="5" width="2" height="4" fill="#2F6BFF"/>
+          <rect x="4" y="3" width="14" height="2" fill="#2F6BFF"/>
+          <!-- body -->
+          <rect x="3" y="6" width="16" height="7" fill="#101A55"/>
+          <rect x="3" y="6" width="16" height="1" fill="#34E0FF"/>
+          <rect x="3" y="12" width="16" height="1" fill="#34E0FF"/>
+          <rect x="3" y="6" width="1" height="7" fill="#34E0FF"/>
+          <rect x="18" y="6" width="1" height="7" fill="#34E0FF"/>
+          <!-- lenses -->
+          <rect x="5" y="8" width="4" height="3" fill="#39FF14"/>
+          <rect x="13" y="8" width="4" height="3" fill="#39FF14"/>
+          <rect x="6" y="8" width="1" height="1" fill="#ffffff"/>
+          <rect x="14" y="8" width="1" height="1" fill="#ffffff"/>
+          <!-- nose notch -->
+          <rect x="10" y="11" width="2" height="2" fill="#070B26"/>
+          <!-- sparkles -->
+          <rect x="0" y="1" width="1" height="1" fill="#FF2BD6"/>
+          <rect x="21" y="2" width="1" height="1" fill="#FF2BD6"/>
+          <rect x="20" y="14" width="1" height="1" fill="#39FF14"/>
+          <rect x="1" y="13" width="1" height="1" fill="#34E0FF"/>
+        </svg>
+      </div>
     </div>
   </div>
 </header>
 
 <!-- ===================== NAV STRIP ===================== -->
 <nav class="navstrip" aria-label="Section navigation">
-  <a href="#thesis">00 · Thesis</a>
-  <a href="#unity">01 · Unity / C#</a>
-  <a href="#python">02 · Python OOP &amp; GUI</a>
-  <a href="#detaills">03 · DETAILLs internship</a>
-  <a href="#design">04 · User research</a>
-  <a href="#ai-essay">05 · AI ethics essay</a>
-  <a href="#datajourn">06 · Data journalism</a>
-  <a href="#mt">07 · MT evaluation</a>
-  <a href="#skills">Skills &amp; certifications</a>
+  <a href="#thesis">00 THESIS</a>
+  <a href="#unity">01 UNITY</a>
+  <a href="#python">02 PYTHON</a>
+  <a href="#detaills">03 DETAILLS</a>
+  <a href="#design">04 RESEARCH</a>
+  <a href="#ai-essay">05 AI ETHICS</a>
+  <a href="#datajourn">06 DATA JOURN.</a>
+  <a href="#mt">07 MT EVAL</a>
+  <a href="#skills">SKILLS</a>
 </nav>
 
 <main id="main">
 
-  <div class="section-label">— Index of work</div>
-  <h2 class="section-heading">Seven projects, one continuous thread: making complex systems legible — to learners, to listeners, to readers.</h2>
+  <div class="section-label">SELECT ABOVE</div>
+  <h2 class="section-heading">Selected work from my Master’s degree in Digital Humanities: thesis, internship and course projects.</h2>
 
   <div class="grid-projects">
 
-    <!-- ============ 00 — THESIS ============ -->
-    <div class="card" id="thesis">
+    <!-- ============ 00 THESIS (BOSS LEVEL) ============ -->
+    <div class="card boss" id="thesis">
       <div class="card-top">
-        <h3><!-- TODO: insert exact thesis title -->[Thesis title]</h3>
-        <div class="card-num">00</div>
+        <h3>ItalianVRExperience: an immersive VR experience for situated acquisition of Italian as a second language</h3>
+        <div class="card-num">00 FINAL BOSS</div>
       </div>
       <div class="tag-row">
-        <span class="tag lab">In progress</span>
-        <span class="tag">Unity · C#</span>
-        <span class="tag">VR</span>
-        <span class="tag">Language pedagogy</span>
+        <span class="tag lab">Completed 2026</span>
+        <span class="tag">Unity 6 / C#</span>
+        <span class="tag">Meta Quest 2</span>
+        <span class="tag cy">Whisper ASR</span>
+        <span class="tag cy">Ollama / Mistral</span>
+        <span class="tag">VR-CALL</span>
+        <span class="tag coral">Design-Based Research</span>
       </div>
-      <p>Design and development of a virtual reality application for teaching Italian at A1 level to English-speaking learners. The work is carried out as a visiting student at <!-- TODO: lab name -->[lab name], Scuola Superiore Sant'Anna, Pisa, under the supervision of <!-- TODO: supervisor -->[Supervisor name].</p>
-      <p>The project combines Unity (C#) development, interaction design, and a solid grounding in Italian linguistics, applied to building immersive scenarios for L2 acquisition.</p>
-      <p class="note">To complete: specific learning objectives, pedagogical methodology, current development stage, screenshots or video of the prototype.</p>
+      <p>Master's thesis in Digital Humanities (supervisor Prof. Marcello Carrozzino, co-supervisor Prof. Mirko Tavosanis). A VR prototype for adult English speakers with no prior knowledge of Italian. The player arrives at the imaginary town of Bellavalle and has to use Italian to get around: the language is never the subject of an exercise, it is the tool for solving real situations. The syllabus is a survival A1 repertoire built from the Profilo della lingua italiana, with the focus on spoken production.</p>
+      <p>Implementation took place as a visiting student at the Institute of Mechanical Intelligence, Scuola Superiore Sant'Anna, Pisa.</p>
+
+      <div class="scenes">
+        <div class="scene"><img src="img/stazione1.jpg" alt="Station scene: the ticket inspector on the train" loading="lazy"><b>01 STATION</b>Onboarding on the train. Hand your ticket to the inspector, physically.</div>
+        <div class="scene"><img src="img/vicina.jpg" alt="Neighbourhood scene: Lina, the neighbour" loading="lazy"><b>02 NEIGHBOURHOOD</b>Speak to Lina, the neighbour. Name capture by voice, subtitles on.</div>
+        <div class="scene"><img src="img/baristaelistenandrepeat.jpg" alt="Bar scene: ordering at the counter" loading="lazy"><b>03 BAR</b>Order at the counter with plausible distractors, no translation, listen-and-repeat labels.</div>
+        <div class="scene"><img src="img/giradischi.jpg" alt="Home scene: living room with the record player" loading="lazy"><b>04 HOME</b>Free exploration of descriptive vocabulary, plus a record player with an animated song transcription.</div>    
+      </div>
+
+      <p><strong>What I built</strong></p>
+      <ul>
+        <li>Controller-free interaction with hand tracking (XR Hands): custom gestures for locomotion, grabbing, pinch selection, inventory and push-to-talk</li>
+        <li>Fully local speech recognition with Whisper (ggml-small), tolerant text matching and a turn-taking sound cue</li>
+        <li>Grammar and vocabulary tutor driven by a local LLM (Ollama/Mistral) used only for intent extraction, with answers coming from hand-verified databases to rule out hallucinations</li>
+        <li>Dialogue system with NPC trees, an event bus, persistent game state and an automatic behavioural logger (CSV)</li>
+        <li>Environments assembled from Asset Store and Sketchfab models, with Blender fixes, Mixamo animations and ElevenLabs voices</li>
+      </ul>
+      <div class="video-frame">
+          <video controls preload="metadata">
+              <source src="img/Video20sec.mp4" type="video/mp4">
+              Your browser does not support video playback.
+          </video>
+          <p class="caption">GAMEPLAY | 29 SECONDS</p>
+      </div>
+      <p><strong>User study</strong> (15 English-speaking absolute beginners, one 30 minute session, post-test only design, exploratory results):</p>
+      <div class="scoreboard">
+        <div class="stat"><div class="val">86%</div><div class="lbl">post-test accuracy (12.1 / 14 items)</div></div>
+        <div class="stat"><div class="val">62%</div><div class="lbl">speech recognised at first attempt</div></div>
+        <div class="stat"><div class="val">81%</div><div class="lbl">agreement between Whisper and a native listener</div></div>
+        <div class="stat"><div class="val">86.7</div><div class="lbl">System Usability Scale (out of 100)</div></div>
+        <div class="stat"><div class="val">4.36</div><div class="lbl">Slater-Usoh-Steed presence (out of 5)</div></div>
+      </div>
+      <ul>
+        <li>The best remembered formulas are the ones tied to a physical or situated action, such as handing over the ticket</li>
+        <li>Whisper keeps the dialogue going but cannot replace a human ear for pronunciation: the non-rhotic /r/ is often silently normalised to the Italian spelling</li>
+        <li>Behavioural logs complement the post-test instead of replacing it, because they measure speaking while the post-test measures recognition</li>
+      </ul>
       <div class="links-row">
-        <a href="#" class="placeholder">Prototype demo / video</a>
+          <a href="TesiAM.pdf" target="_blank" rel="noopener">
+              Thesis PDF
+          </a>
+
+          <a href="https://github.com/halesenberg/Italian-Experience-v.2" target="_blank" rel="noopener">
+              GitHub repo
+          </a>
       </div>
     </div>
 
-    <!-- ============ 01 — UNITY ============ -->
+    <!-- ============ 01 UNITY ============ -->
     <div class="card" id="unity">
       <div class="card-top">
-        <h3>Virtual environments — coursework and implementation</h3>
+        <h3>Virtual environments: coursework and implementation</h3>
         <div class="card-num">01</div>
       </div>
       <div class="tag-row">
@@ -405,19 +445,18 @@
         <span class="tag">C#</span>
         <span class="tag">Interaction design</span>
       </div>
-      <p>Development of interactive 3D environments for the Virtual Environments course (grade 28/30), which laid the technical groundwork later applied to the thesis at Scuola Superiore Sant'Anna.</p>
+      <p>Development of interactive 3D environments for the Virtual Environments course (grade 28/30), which laid the technical groundwork later applied to the thesis (see 00).</p>
       <ul>
         <li>Building 3D scenes and managing user interaction in Unity</li>
         <li>C# scripting for game logic and environment interaction</li>
-        <li>Direct application to the VR language-learning prototype (see 00)</li>
+        <li>Direct application to the VR language-learning game, from scene design to hand tracking</li>
       </ul>
-      <p class="note">To complete: scene screenshots, code repository link, exam project details.</p>
     </div>
 
-    <!-- ============ 02 — PYTHON ============ -->
+    <!-- ============ 02 PYTHON ============ -->
     <div class="card" id="python">
       <div class="card-top">
-        <h3>Digital pantry manager — Python OOP &amp; GUI</h3>
+        <h3>Digital pantry manager: Python OOP &amp; GUI</h3>
         <div class="card-num">02</div>
       </div>
       <div class="tag-row">
@@ -427,22 +466,26 @@
       </div>
       <p>Two assignments for the Programming and Data Analysis course (grade 27/30), evolving from a procedural implementation into a fully object-oriented system with a graphical interface.</p>
       <ul>
-        <li><strong>Assignment 2</strong> — procedural pantry management: creating, adding, and removing ingredients, calorie and cost calculation, file read/write, with automated tests and explicit exception handling (<code>TypeError</code>, <code>ValueError</code>, <code>KeyError</code>)</li>
-        <li><strong>Assignment 3</strong> — refactored into classes (<code>Dispensa</code>, <code>Ingrediente</code>, <code>Ricetta</code>) with dunder methods (<code>__eq__</code>, <code>__str__</code>, <code>__add__</code>) and a Tkinter GUI for interactive ingredient and recipe management</li>
+        <li><strong>Assignment 2:</strong> procedural pantry management: creating, adding, and removing ingredients, calorie and cost calculation, file read/write, with automated tests and explicit exception handling (<code>TypeError</code>, <code>ValueError</code>, <code>KeyError</code>)</li>
+        <li><strong>Assignment 3:</strong> refactored into classes (<code>Dispensa</code>, <code>Ingrediente</code>, <code>Ricetta</code>) with dunder methods (<code>__eq__</code>, <code>__str__</code>, <code>__add__</code>) and a Tkinter GUI for interactive ingredient and recipe management</li>
       </ul>
-      <div class="specimen"><span class="scomment"># ricetta.py — operator overloading example</span><br>
+      <div class="specimen"><span class="scomment"># ricetta.py, operator overloading example</span><br>
 <span class="sline">def __add__(self, altroingredientequant):</span><br>
 &nbsp;&nbsp;<span class="sline">if type(altroingredientequant) is not IngredienteQuantita:</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="sline">raise TypeError("the ingredient is not of the correct type")</span><br>
 &nbsp;&nbsp;<span class="sline">...</span><br>
 &nbsp;&nbsp;<span class="sline">return self</span></div>
-      <p class="note">To complete: GitHub repository link (recommended for both assignments), screenshot of the running GUI.</p>
+      <div class="links-row">
+          <a href="https://github.com/halesenberg/PythonProjects" target="_blank" rel="noopener">
+              GitHub repo
+          </a>
+      </div>
     </div>
 
-    <!-- ============ 03 — DETAILLS INTERNSHIP ============ -->
+    <!-- ============ 03 DETAILLS INTERNSHIP ============ -->
     <div class="card" id="detaills">
       <div class="card-top">
-        <h3>Course content design — DETAILLs Living Lab</h3>
+        <h3>Course content design: DETAILLs Living Lab</h3>
         <div class="card-num">03</div>
       </div>
       <div class="tag-row">
@@ -450,84 +493,99 @@
         <span class="tag">Tableau</span>
         <span class="tag coral">Erasmus+ project</span>
       </div>
-      <p>150-hour internship (Mar–Jul 2025) at the <a href="https://www.detaills.eu/" target="_blank" rel="noopener">DETAILLs Living Lab</a>, University of Pisa — an Erasmus+ project (DEsign Tools of Artificial Intelligence in Sustainability Living LabS) building curriculum and training materials on AI-driven sustainable design, under the supervision of Prof. Filippo Chiarello.</p>
-      <p>Beyond the literature review and seminar work, the internship's core deliverable was building actual course content for what has since become a university-level course: video lectures, infographics, interactive elements, and interactive maps built in Tableau — the same tool later applied to the data journalism project below.</p>
+      <p>150-hour internship (Mar to Jul 2025) at the <a href="https://www.detaills.eu/" target="_blank" rel="noopener">DETAILLs Living Lab</a>, University of Pisa, an Erasmus+ project (DEsign Tools of Artificial Intelligence in Sustainability Living LabS) building curriculum and training materials on AI-driven sustainable design, under the supervision of Prof. Filippo Chiarello.</p>
+      <p>Beyond the literature review and seminar work, the core deliverable was building actual course content for what has since become a university-level course: video lectures, infographics, interactive elements, and interactive maps built in Tableau, the same tool later applied to the data journalism project below.</p>
       <ul>
-        <li>Researched and structured pedagogical content on serious games, AI, and sustainable design for an online course, combining literature review (top-down/bottom-up approaches) with tools including Moodle, GitHub, Tableau, and Scimago</li>
+          <li>Researched and structured pedagogical content on serious games, AI, and sustainable design for the course Artificial Intelligence for Sustainability (Università di Pisa), combining literature review (top-down/bottom-up approaches) with tools including Moodle, GitHub, Tableau, and Scimago</li>
         <li>Produced video lectures and infographics translating technical AI/sustainability concepts into accessible course material</li>
         <li>Built interactive Tableau maps and elements integrated into the course's e-learning platform</li>
-        <li>Took part in weekly lab seminars with project partners across the DETAILLs consortium (Pisa, Zagreb, and other partner institutions)</li>
+        <li>Took part in weekly lab seminars with project partners across the DETAILLs consortium (Pisa, Zagreb, Salamanca)</li>
       </ul>
-      <p class="note">To complete: link to the live DETAILLs course module, if publicly accessible, or screenshots of the infographics/interactive maps produced.</p>
       <div class="links-row">
-        <a href="https://www.detaills.eu/" target="_blank" rel="noopener">DETAILLs project site</a>
+        <a href="https://www.detaills.eu/artificial-intelligence-in-sustainable-design/" target="_blank" rel="noopener">DETAILLs project site</a>
       </div>
     </div>
 
-    <!-- ============ 04 — USER RESEARCH ============ -->
+    <!-- ============ 04 USER RESEARCH ============ -->
     <div class="card" id="design">
-      <div class="card-top">
-        <h3>Korova Milk Bar — Desirability &amp; Feasibility Report</h3>
-        <div class="card-num">04</div>
-      </div>
-      <div class="tag-row">
-        <span class="tag lab">Design thinking</span>
-        <span class="tag">User research</span>
-        <span class="tag">Project design</span>
-      </div>
-      <p>Group project for Project Design and Management for Data Science (Prof. Filippo Chiarello &amp; Chiara Lelli), tackling the visibility problem faced by emerging musicians in a $26B global market — structured across a full Desirability and Feasibility cycle.</p>
-      <ul>
-        <li>User research: brainstorming, role-storming, 5 Whys root-cause analysis, interviews, a 10-question survey</li>
-        <li>Five user personas mapped via empathy maps (vinyl collectors, songwriters, emerging musicians, independent label owners, hidden-gem seekers), evaluated with SWOT analysis and Maslow's hierarchy</li>
-        <li>Need prioritisation via a number/importance/confidence scoring matrix across all five user groups</li>
-        <li>Feasibility phase: technology ideation (How-Now-Wow-Huh?-Ciao matrix, fishbone diagram, Google Trends and dataset analysis), narrowed to three candidate solutions</li>
-        <li>Validated solutions through real pretotyping — A/B testing physical vs. digital concert postcards, user feedback collection — assessed with the Fogg Behaviour Model and an Ishikawa 5M analysis</li>
-        <li>Final solution (digital concert postcards with QR-linked content) selected via Pickcharts and NUF Test scoring as the highest-payoff, lowest-difficulty option</li>
-      </ul>
-      <p class="note">To complete: link to the full final report PDF, if shareable externally.</p>
+        <div class="card-top">
+            <h3>PD&M Desirability &amp; Feasibility Report</h3>
+            <div class="card-num">04</div>
+        </div>
+        <div class="tag-row">
+            <span class="tag lab">Design thinking</span>
+            <span class="tag">User research</span>
+            <span class="tag">Project design</span>
+        </div>
+        <p>Duo project for Project Design and Management for Data Science with M. Radojicic, tackling the visibility problem faced by emerging musicians in a $26B global market, structured across a full Desirability and Feasibility cycle.</p>
+        <ul>
+            <li>User research: brainstorming, role-storming, 5 Whys root-cause analysis, interviews, a 10-question survey</li>
+            <li>Five user personas mapped via empathy maps (vinyl collectors, songwriters, emerging musicians, independent label owners, hidden-gem seekers), evaluated with SWOT analysis and Maslow's hierarchy</li>
+            <li>Need prioritisation via a number/importance/confidence scoring matrix across all five user groups</li>
+            <li>Feasibility phase: technology ideation (How-Now-Wow-Huh?-Ciao matrix, fishbone diagram, Google Trends and dataset analysis), narrowed to three candidate solutions</li>
+            <li>Validated solutions through real pretotyping: A/B testing physical vs. digital concert postcards, user feedback collection, assessed with the Fogg Behaviour Model and an Ishikawa 5M analysis</li>
+            <li>Final solution (digital concert postcards with QR-linked content) selected via Pickcharts and NUF Test scoring as the highest-payoff, lowest-difficulty option</li>
+        </ul>
+        <div class="links-row">
+            <a href="ProjectDesignandManagementforDataScience.pdf" target="_blank" rel="noopener">
+                Project report's PDF
+            </a>
+            <a href="Alessia_Montalbano_Now-Wow-How Matrix.pdf" target="_blank" rel="noopener">
+                Personal report's PDF
+            </a>
+        </div>
     </div>
 
-    <!-- ============ 05 — AI ESSAY ============ -->
+    <!-- ============ 05 AI ESSAY ============ -->
     <div class="card" id="ai-essay">
-      <div class="card-top">
-        <h3>Unveiling the Complexities of Artificial Intelligence</h3>
-        <div class="card-num">05</div>
-      </div>
-      <div class="tag-row">
-        <span class="tag lab">AI ethics</span>
-        <span class="tag">Algorithmic bias</span>
-        <span class="tag">Critical essay</span>
-      </div>
-      <p>A critical essay on the structural limits of AI systems in making ethical and moral decisions. The argument moves through DARPA's three "waves" of AI, the problem of opaque "black box" systems, and a review of documented cases of algorithmic bias in gender classification and language models.</p>
-      <ul>
-        <li>Analysis of bias sources across the algorithmic chain (training data, algorithmic focus, output)</li>
-        <li>Critical discussion of AI anthropomorphisation and "ethics washing" narratives in the tech industry</li>
-        <li>Extensive academic bibliography (Hinton &amp; Salakhutdinov, Scharre et al., DARPA, JSTOR sources)</li>
-      </ul>
-      <p class="note">Relevant to research contexts involving behavioural modelling and explainable AI (XAI).</p>
+        <div class="card-top">
+            <h3>Unveiling the Complexities of Artificial Intelligence</h3>
+            <div class="card-num">05</div>
+        </div>
+        <div class="tag-row">
+            <span class="tag lab">AI ethics</span>
+            <span class="tag">Algorithmic bias</span>
+            <span class="tag">Critical essay</span>
+        </div>
+        <p>A critical essay on the structural limits of AI systems in making ethical and moral decisions. The argument moves through DARPA's three "waves" of AI, the problem of opaque "black box" systems, and a review of documented cases of algorithmic bias in gender classification and language models.</p>
+        <ul>
+            <li>Analysis of bias sources across the algorithmic chain (training data, algorithmic focus, output)</li>
+            <li>Critical discussion of AI anthropomorphisation and "ethics washing" narratives in the tech industry</li>
+            <li>Extensive academic bibliography (Hinton &amp; Salakhutdinov, Scharre et al., DARPA, JSTOR sources)</li>
+        </ul>
+        <p class="note">Relevant to research contexts involving behavioural modelling and explainable AI (XAI).</p>
+        <div class="links-row">
+            <a href="ArtificialIntelligenceEssay.pdf" target="_blank" rel="noopener">
+                Essay's PDF
+            </a>
+        </div>
     </div>
 
-    <!-- ============ 06 — DATA JOURNALISM ============ -->
+    <!-- ============ 06 DATA JOURNALISM ============ -->
     <div class="card" id="datajourn">
-      <div class="card-top">
-        <h3>Oggi a tavola, dieta mediterranea</h3>
-        <div class="card-num">06</div>
-      </div>
-      <div class="tag-row">
-        <span class="tag lab">Data journalism</span>
-        <span class="tag">Tableau</span>
-        <span class="tag">Group work</span>
-      </div>
-      <p>Data journalism project built with Giacomo Fidone and Valentina Galli. A multimedia article critically dismantling the myth of the Mediterranean diet as an automatically healthy model, grounded in IHME data on dietary risk factors in Italy.</p>
-      <ul>
-        <li>Interactive Tableau dashboards embedded directly in the page</li>
-        <li>Original interview with a nutrition expert</li>
-        <li>Historical framing (Ancel Keys, 1950s) and critique of national marketing narratives</li>
-      </ul>
-      <p class="note">To complete: link to the live page if hosted, or dashboard screenshots.</p>
+        <div class="card-top">
+            <h3>Oggi a tavola, dieta mediterranea</h3>
+            <div class="card-num">06</div>
+        </div>
+        <div class="tag-row">
+            <span class="tag lab">Data journalism</span>
+            <span class="tag">Tableau</span>
+            <span class="tag">Group work</span>
+        </div>
+        <p>Data journalism project built with G. Fidone (Data analysis) and V.Galli (Graphics). Development, research and writing of a multimedia article critically dismantling the myth of the Mediterranean diet as an automatically healthy model, grounded in IHME data on dietary risk factors in Italy.</p>
+        <ul>
+            <li>Interactive Tableau dashboards embedded directly in the page</li>
+            <li>Original interview with a nutrition expert</li>
+            <li>Historical framing (Ancel Keys, 1950s) and critique of national marketing narratives</li>
+        </ul>
+        <div class="links-row">
+            <a href="sito-dj/sito-dj.html" target="_blank" rel="noopener">
+                DJ Project's overview
+            </a>
+        </div>
     </div>
 
-    <!-- ============ 07 — MT EVALUATION ============ -->
+    <!-- ============ 07 MT EVALUATION ============ -->
     <div class="card" id="mt">
       <div class="card-top">
         <h3>Semi-automatic evaluation of machine translation systems</h3>
@@ -536,7 +594,7 @@
       <div class="tag-row">
         <span class="tag lab">NLP</span>
         <span class="tag">Computational linguistics</span>
-        <span class="tag">RU → IT</span>
+        <span class="tag">RU &gt; IT</span>
       </div>
       <p>Report for the Italian Linguistics course (Prof. Mirko Tavosanis) comparing Google Translate, DeepL, and ChatGPT-4 on a Russian-to-Italian translation of an institutional news text, combining automatic metrics (BLEU, F-Measure, TER) with a three-dimension qualitative scoring grid.</p>
       <ul>
@@ -544,47 +602,66 @@
         <li>Scoring grid covering semantic fidelity, register/genre adequacy, and formal correctness</li>
         <li>Result: ChatGPT-4 most natural stylistically, DeepL most balanced terminologically, Google Translate penalised by literal calques</li>
       </ul>
-    </div>
-
+      <div class="links-row">
+          <a href="LinguisticaItalianaIIAlessiaMontalbano.pdf" target="_blank" rel="noopener">
+              Essay's PDF
+          </a>
+      </div>
   </div>
 
   <!-- ============ SKILLS & CERTIFICATIONS ============ -->
   <div id="skills">
-    <div class="section-label">— Reference</div>
+    <div class="section-label">INVENTORY</div>
     <h2 class="section-heading">Skills &amp; certifications</h2>
 
     <div class="skills-wrap">
       <div class="skill-card">
-        <h4>Programming</h4>
+        <h4>PROGRAMMING</h4>
         <ul>
           <li><span class="label">Python (procedural &amp; OOP)</span></li>
           <li><span class="label">C# (Unity)</span></li>
           <li><span class="label">JavaScript</span></li>
+          <li><span class="label">HTML / CSS</span></li>
         </ul>
       </div>
       <div class="skill-card">
-        <h4>XR &amp; data tools</h4>
+        <h4>XR &amp; TOOLS</h4>
         <ul>
-          <li><span class="label">Unity</span></li>
+          <li><span class="label">Unity 6 / XR Hands / OpenXR</span></li>
+          <li><span class="label">Blender</span><span class="yr">intermediate</span></li>
+          <li><span class="label">Whisper &amp; Ollama (local AI)</span></li>
           <li><span class="label">Tableau</span></li>
-          <li><span class="label">Adobe CC suite</span></li>
+          <li><span class="label">Adobe Creative Suite</span></li>
+          <li><span class="label">Microsoft Office</span></li>
         </ul>
       </div>
       <div class="skill-card">
-        <h4>Certifications</h4>
+        <h4>RESEARCH</h4>
         <ul>
-          <li class="expired"><span class="label">Google Ads Search</span><span class="yr">2023</span></li>
-          <li class="expired"><span class="label">Google Ads Measurement</span><span class="yr">2023</span></li>
+          <li><span class="label">Design-Based Research</span></li>
+          <li><span class="label">User studies (SUS, presence)</span></li>
+          <li><span class="label">Perceptual evaluation of ASR</span></li>
+          <li><span class="label">Google Analytics</span></li>
         </ul>
-        <p class="note" style="margin-top:1rem;">Certifications shown reflect skills acquired through coursework in Technologies for Web Marketing; both have since lapsed and are listed for completeness, not as current credentials.</p>
       </div>
       <div class="skill-card">
-        <h4>Languages</h4>
+        <h4>CERTIFICATIONS</h4>
+        <ul>
+            <li class="expired"><span class="label">BACHELOR DEGREE Foreign Languages and Literatures</span><span class="yr">2021</span></li>
+            <li class="expired"><span class="label">MASTER DEGREE Digital Humanities</span><span class="yr">2026</span></li>
+            <li class="expired"><span class="label">Google Ads Search</span><span class="yr">2023</span></li>
+            <li class="expired"><span class="label">Google Ads Measurement</span><span class="yr">2023</span></li>
+        </ul>
+        <p class="note">Certifications reflect skills acquired through coursework in Technologies for Web Marketing; both have since lapsed and are listed for completeness, not as current credentials.</p>
+      </div>
+      <div class="skill-card">
+        <h4>LANGUAGES</h4>
         <ul>
           <li><span class="label">Italian</span><span class="yr">native</span></li>
           <li><span class="label">English</span><span class="yr">C1</span></li>
           <li><span class="label">Russian</span><span class="yr">B2</span></li>
           <li><span class="label">French</span><span class="yr">A2</span></li>
+          <li><span class="label">Dutch</span><span class="yr">beginner</span></li>
         </ul>
       </div>
     </div>
@@ -593,8 +670,8 @@
 </main>
 
 <footer class="colophon">
-  <span>Last updated: <!-- TODO: date -->[day month year]</span>
-  <span>Single static file, no build step. Edit directly in <code>index.html</code> — every section is commented.</span>
+  <span>Last updated: 2 November 2026</span>
+  <span class="gameover">THANK YOU FOR READING THIS</span>
 </footer>
 
 <script>
