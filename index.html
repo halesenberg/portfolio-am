@@ -1,1425 +1,428 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alessia Montalbano | Portfolio</title>
+<title>Alessia Montalbano | XR designer</title>
+<meta name="description" content="Alessia Montalbano designs, builds and tests immersive learning experiences. Portfolio: ItalianVRExperience, a Unity VR game for learning Italian, plus research and content design work.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:#070B26;
-  --bg-2:#0D1440;
-  --panel:#101A55;
-  --blue:#2F6BFF;
-  --cyan:#34E0FF;
-  --green:#39FF14;
-  --pink:#FF2BD6;
-  --text:#D9E6FF;
-  --dim:#8EA2D9;
-  --px:4px;
-}
-
-* {
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html {
-  scroll-behavior:smooth;
-}
-
-body {
-  background:var(--bg);
-  background-image:
-    radial-gradient(2px 2px at 20px 30px, #ffffff 50%, transparent 51%),
-    radial-gradient(2px 2px at 140px 90px, var(--cyan) 50%, transparent 51%),
-    radial-gradient(2px 2px at 80px 160px, var(--pink) 50%, transparent 51%),
-    radial-gradient(2px 2px at 200px 20px, #ffffff 50%, transparent 51%);
-  background-size:240px 200px;
-  color:var(--text);
-  font-family:'VT323', monospace;
-  font-size:1.35rem;
-  line-height:1.35;
-  overflow-x:hidden;
-  image-rendering:pixelated;
-}
-
-body::after {
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:200;
-  background:repeating-linear-gradient(
-    to bottom,
-    rgba(0,0,0,.18) 0 1px,
-    transparent 1px 3px
-  );
-}
-
-::selection {
-  background:var(--pink);
-  color:#fff;
-}
-
-a {
-  color:var(--cyan);
-}
-
-a:hover {
-  color:var(--green);
-}
-
-.skip-link {
-  position:absolute;
-  left:-9999px;
-}
-
-.skip-link:focus {
-  left:1rem;
-  top:1rem;
-  background:var(--green);
-  color:#000;
-  padding:.5rem 1rem;
-  z-index:999;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation:none !important;
-    transition:none !important;
+  :root{
+    --paper:#F7F8FA;
+    --ink:#1B2130;
+    --muted:#5F6878;
+    --line:#D6DBE6;
+    --blue:#2F6BFF;
+    --blue-deep:#1F4DC2;
+    --tint:#E9EFFF;
+    --measure:68ch;
   }
-}
-
-.pf {
-  font-family:'Press Start 2P', monospace;
-  line-height:1.6;
-}
-
-/* ===== HERO ===== */
-
-.hero {
-  position:relative;
-  padding:4rem 6vw;
-  border-bottom:var(--px) solid var(--blue);
-  background:linear-gradient(
-    180deg,
-    rgba(47,107,255,.18),
-    transparent 70%
-  );
-}
-
-.hero-inner {
-  max-width:1100px;
-  margin:0 auto;
-}
-
-.insert-coin {
-  font-family:'Press Start 2P', monospace;
-  font-size:.65rem;
-  color:var(--green);
-  letter-spacing:.08em;
-  margin-bottom:1.6rem;
-  animation:blink 1.1s steps(2, start) infinite;
-}
-
-@keyframes blink {
-  50% { opacity:0; }
-}
-
-.hud {
-  display:flex;
-  flex-wrap:wrap;
-  gap:1.2rem 2.4rem;
-  font-family:'Press Start 2P', monospace;
-  font-size:.6rem;
-  color:var(--dim);
-  margin-bottom:2rem;
-}
-
-.hud b {
-  color:var(--pink);
-  font-weight:400;
-}
-
-.hud .hearts {
-  color:var(--pink);
-  letter-spacing:.2em;
-}
-
-h1.hero-title {
-  font-family:'Press Start 2P', monospace;
-  font-weight:400;
-  font-size:clamp(1.15rem, 3.2vw, 2.1rem);
-  line-height:1.7;
-  max-width:960px;
-  margin-bottom:1.8rem;
-  text-shadow:4px 4px 0 var(--blue);
-}
-
-h1.hero-title .g {
-  color:var(--green);
-  text-shadow:4px 4px 0 #0a4d00;
-}
-
-h1.hero-title .p {
-  color:var(--pink);
-  text-shadow:4px 4px 0 #5a0b4d;
-}
-
-h1.hero-title .c {
-  color:var(--cyan);
-  text-shadow:4px 4px 0 #0b4a63;
-}
-
-.hero-grid {
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:2rem;
-  align-items:center;
-}
-
-@media (max-width:760px) {
-  .hero-grid {
-    grid-template-columns:1fr;
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Atkinson Hyperlegible', system-ui, sans-serif;
+    font-size:1.0625rem;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
   }
+  a{color:var(--blue-deep); text-decoration-thickness:1px; text-underline-offset:3px;}
+  a:hover{color:var(--blue);}
+  a:focus-visible, button:focus-visible{outline:3px solid var(--blue); outline-offset:3px; border-radius:2px;}
+  .skip-link{position:absolute; left:-9999px;}
+  .skip-link:focus{left:1rem; top:1rem; background:var(--ink); color:#fff; padding:.5rem 1rem; z-index:999;}
 
-  .sprite-wrap {
-    display:none;
+  .wrap{max-width:820px; margin:0 auto; padding:0 1.25rem;}
+
+  /* Header */
+  .top{
+    position:sticky; top:0; z-index:20;
+    background:rgba(247,248,250,.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
   }
-}
+  .top .wrap{display:flex; align-items:center; justify-content:space-between; gap:1rem; height:3.5rem;}
+  .brand{display:flex; align-items:center; gap:.6rem; text-decoration:none; color:var(--ink); font-weight:700;}
+  .brand svg{width:26px; height:auto;}
+  .top nav{display:flex; gap:1.1rem; flex-wrap:wrap;}
+  .top nav a{text-decoration:none; color:var(--muted); font-size:.95rem;}
+  .top nav a:hover{color:var(--ink);}
+  @media (max-width:640px){ .top nav{display:none;} }
 
-.hero-sub {
-  font-size:1.5rem;
-  color:var(--text);
-  max-width:680px;
-  margin-bottom:2rem;
-}
-
-.hero-sub em {
-  color:var(--green);
-  font-style:normal;
-}
-
-.hero-meta {
-  display:flex;
-  flex-wrap:wrap;
-  gap:1.2rem 2.4rem;
-}
-
-.hero-meta div {
-  font-size:1.25rem;
-  color:var(--dim);
-}
-
-.hero-meta strong {
-  display:block;
-  font-family:'Press Start 2P', monospace;
-  font-weight:400;
-  font-size:.6rem;
-  color:var(--cyan);
-  margin-bottom:.45rem;
-}
-
-.hero-meta a {
-  color:var(--text);
-  text-decoration:none;
-  border-bottom:2px dashed var(--pink);
-}
-
-.hero-meta a:hover {
-  color:var(--green);
-  border-color:var(--green);
-}
-
-.sprite-wrap {
-  padding:1rem;
-  border:var(--px) solid var(--pink);
-  background:var(--bg-2);
-  box-shadow:8px 8px 0 var(--blue);
-}
-
-.sprite {
-  display:block;
-  width:176px;
-  height:auto;
-  image-rendering:pixelated;
-  animation:bob 1.4s steps(2, end) infinite;
-}
-
-@keyframes bob {
-  50% { transform:translateY(-6px); }
-}
-
-/* ===== NAV ===== */
-
-.navstrip {
-  position:sticky;
-  top:0;
-  z-index:50;
-  background:var(--bg-2);
-  border-bottom:var(--px) solid var(--pink);
-  display:flex;
-  overflow-x:auto;
-  padding:0 4vw;
-  scrollbar-width:none;
-}
-
-.navstrip::-webkit-scrollbar {
-  display:none;
-}
-
-.navstrip a {
-  flex-shrink:0;
-  font-family:'Press Start 2P', monospace;
-  font-size:.55rem;
-  text-decoration:none;
-  color:var(--dim);
-  padding:1.1rem .9rem;
-  white-space:nowrap;
-}
-
-.navstrip a:hover,
-.navstrip a:focus-visible {
-  color:var(--green);
-}
-
-.navstrip a.active {
-  color:#000;
-  background:var(--green);
-}
-
-/* ===== MAIN ===== */
-
-main {
-  max-width:1100px;
-  margin:0 auto;
-  padding:4rem 5vw 5rem;
-}
-
-.section-label {
-  font-family:'Press Start 2P', monospace;
-  font-size:.65rem;
-  color:var(--pink);
-  margin-bottom:1rem;
-}
-
-.section-label::before {
-  content:"> ";
-  color:var(--green);
-}
-
-.section-heading {
-  font-family:'Press Start 2P', monospace;
-  font-weight:400;
-  font-size:clamp(.85rem, 1.9vw, 1.2rem);
-  line-height:1.8;
-  margin-bottom:2.6rem;
-  max-width:760px;
-}
-
-/* ===== PROJECT CARDS ===== */
-
-.grid-projects {
-  display:grid;
-  gap:2.2rem;
-  margin-bottom:5rem;
-}
-
-.card {
-  position:relative;
-  background:var(--panel);
-  border:var(--px) solid var(--blue);
-  box-shadow:8px 8px 0 var(--pink);
-  padding:2rem 2rem 1.8rem;
-  scroll-margin-top:5rem;
-  transition:transform .12s steps(2), box-shadow .12s steps(2);
-}
-
-.card:hover {
-  transform:translate(-4px,-4px);
-  box-shadow:12px 12px 0 var(--green);
-}
-
-.card.boss {
-  border-color:var(--green);
-  box-shadow:8px 8px 0 var(--blue);
-}
-
-.card.boss:hover {
-  box-shadow:12px 12px 0 var(--pink);
-}
-
-@media (max-width:700px) {
-  .card {
-    padding:1.4rem 1.2rem;
+  /* Hero */
+  .hero{padding:4.5rem 0 3.5rem; border-bottom:1px solid var(--line);}
+  .hero h1{
+    font-size:clamp(1.9rem, 4.6vw, 2.9rem);
+    line-height:1.12;
+    letter-spacing:-.015em;
+    max-width:18ch;
+    margin-bottom:1.4rem;
   }
-}
-
-.card-top {
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:1rem;
-  margin-bottom:1.1rem;
-}
-
-.card-num {
-  font-family:'Press Start 2P', monospace;
-  font-size:.6rem;
-  background:var(--pink);
-  color:#000;
-  padding:.55rem .6rem;
-  white-space:nowrap;
-}
-
-.boss .card-num {
-  background:var(--green);
-}
-
-.card h3 {
-  font-family:'Press Start 2P', monospace;
-  font-weight:400;
-  font-size:clamp(.8rem, 1.6vw, 1.05rem);
-  line-height:1.7;
-  color:#fff;
-}
-
-.tag-row {
-  display:flex;
-  flex-wrap:wrap;
-  gap:.5rem;
-  margin-bottom:1.2rem;
-}
-
-.tag {
-  font-family:'Press Start 2P', monospace;
-  font-size:.5rem;
-  padding:.4rem .5rem;
-  border:2px solid var(--dim);
-  color:var(--dim);
-}
-
-.tag.lab {
-  color:var(--green);
-  border-color:var(--green);
-}
-
-.tag.coral {
-  color:var(--pink);
-  border-color:var(--pink);
-}
-
-.tag.cy {
-  color:var(--cyan);
-  border-color:var(--cyan);
-}
-
-.card p {
-  margin-bottom:.9rem;
-  max-width:760px;
-  font-size:1.4rem;
-}
-
-.card ul {
-  list-style:none;
-  margin:0 0 .9rem 0;
-  max-width:760px;
-}
-
-.card li {
-  margin-bottom:.5rem;
-  padding-left:1.5rem;
-  position:relative;
-  font-size:1.4rem;
-}
-
-.card li::before {
-  content:"";
-  position:absolute;
-  left:0;
-  top:.5em;
-  width:.6rem;
-  height:.6rem;
-  background:var(--green);
-}
-
-.card strong {
-  color:var(--cyan);
-  font-weight:400;
-}
-
-.card code {
-  color:var(--green);
-  background:var(--bg);
-  padding:0 .3rem;
-}
-
-.card .note {
-  font-size:1.2rem;
-  color:var(--dim);
-  border-left:4px solid var(--pink);
-  padding-left:.9rem;
-  margin-top:1.1rem;
-}
-
-.specimen {
-  margin-top:1.2rem;
-  padding:1rem 1.2rem;
-  background:var(--bg);
-  border:2px solid var(--blue);
-  font-size:1.2rem;
-  color:var(--dim);
-  overflow-x:auto;
-}
-
-.specimen .sline {
-  color:var(--text);
-}
-
-.specimen .scomment {
-  color:var(--green);
-}
-
-.links-row {
-  margin-top:1.3rem;
-  display:flex;
-  gap:1rem;
-  flex-wrap:wrap;
-}
-
-.links-row a {
-  font-family:'Press Start 2P', monospace;
-  font-size:.55rem;
-  text-decoration:none;
-  color:#000;
-  background:var(--green);
-  padding:.8rem .9rem;
-  box-shadow:4px 4px 0 var(--pink);
-}
-
-.links-row a:hover {
-  background:var(--cyan);
-  transform:translate(2px,2px);
-  box-shadow:2px 2px 0 var(--pink);
-}
-
-.links-row a.placeholder {
-  background:transparent;
-  color:var(--dim);
-  border:2px dashed var(--dim);
-  box-shadow:none;
-  cursor:default;
-}
-
-/* ===== SCOREBOARD ===== */
-
-.scoreboard {
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
-  gap:1rem;
-  margin:1.4rem 0;
-}
-
-.stat {
-  background:var(--bg);
-  border:var(--px) solid var(--cyan);
-  padding:1rem .8rem;
-  text-align:center;
-}
-
-.stat .val {
-  font-family:'Press Start 2P', monospace;
-  font-size:1.25rem;
-  color:var(--green);
-  text-shadow:3px 3px 0 #0a4d00;
-  margin-bottom:.7rem;
-}
-
-.stat:nth-child(even) .val {
-  color:var(--pink);
-  text-shadow:3px 3px 0 #5a0b4d;
-}
-
-.stat .lbl {
-  font-size:1.1rem;
-  color:var(--dim);
-  line-height:1.15;
-}
-
-/* ===== IMAGE GRID ===== */
-
-.scenes {
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
-  gap:1.2rem;
-  margin:1.2rem 0;
-}
-
-.scene {
-  min-width:0;
-  border:2px dashed var(--blue);
-  padding:.8rem;
-  font-size:1.25rem;
-}
-
-.scene b {
-  display:block;
-  font-family:'Press Start 2P', monospace;
-  font-weight:400;
-  font-size:.55rem;
-  color:var(--pink);
-  margin-bottom:.5rem;
-}
-
-.scene img {
-  display:block;
-  width:100%;
-  height:auto;
-  aspect-ratio:16/9;
-  object-fit:cover;
-  border:var(--px) solid var(--cyan);
-  margin-bottom:.8rem;
-  image-rendering:auto;
-}
-
-/* ===== VIDEO ===== */
-
-.video-frame {
-  margin:1.4rem 0;
-  border:var(--px) solid var(--pink);
-  box-shadow:8px 8px 0 var(--blue);
-  background:var(--bg);
-  max-width:760px;
-}
-
-.video-frame video {
-  display:block;
-  width:100%;
-  height:auto;
-}
-
-.video-frame .caption {
-  font-family:'Press Start 2P', monospace;
-  font-size:.5rem;
-  color:var(--dim);
-  padding:.8rem;
-  margin:0;
-}
-
-/* ===== SKILLS ===== */
-
-.skills-wrap {
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
-  gap:1.4rem;
-  margin-bottom:5rem;
-}
-
-.skill-card {
-  background:var(--panel);
-  border:var(--px) solid var(--blue);
-  box-shadow:6px 6px 0 var(--pink);
-  padding:1.4rem;
-}
-
-.skill-card h4 {
-  font-family:'Press Start 2P', monospace;
-  font-weight:400;
-  font-size:.6rem;
-  color:var(--green);
-  margin-bottom:1rem;
-}
-
-.skill-card ul {
-  list-style:none;
-}
-
-.skill-card li {
-  font-size:1.3rem;
-  padding:.35rem 0;
-  border-top:2px dotted var(--blue);
-  display:flex;
-  justify-content:space-between;
-  gap:.6rem;
-  align-items:baseline;
-}
-
-.skill-card li:first-child {
-  border-top:none;
-}
-
-.skill-card .yr {
-  font-size:1.1rem;
-  color:var(--dim);
-  white-space:nowrap;
-}
-
-.skill-card li.expired .yr {
-  color:var(--pink);
-}
-
-.skill-card li.expired .label::after {
-  content:" (expired)";
-  font-size:1.05rem;
-  color:var(--dim);
-}
-
-.skill-card .note {
-  font-size:1.1rem;
-  color:var(--dim);
-  margin-top:1rem;
-  border-left:4px solid var(--pink);
-  padding-left:.7rem;
-}
-
-/* ===== FOOTER ===== */
-
-footer.colophon {
-  border-top:var(--px) solid var(--blue);
-  padding:2rem 6vw 3rem;
-  font-size:1.15rem;
-  color:var(--dim);
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:1rem;
-}
-
-footer.colophon .gameover {
-  font-family:'Press Start 2P', monospace;
-  font-size:.6rem;
-  color:var(--pink);
-}
-
-footer.colophon code {
-  color:var(--green);
-}
-
-/* ===== RESPONSIVE ===== */
-
-@media (max-width:650px) {
-  .scenes {
-    grid-template-columns:1fr;
+  .hero h1 span{color:var(--blue);}
+  .hero p{max-width:var(--measure); font-size:1.15rem; margin-bottom:1rem;}
+  .hero .looking{
+    max-width:var(--measure);
+    background:var(--tint);
+    border-left:4px solid var(--blue);
+    padding:.9rem 1.1rem;
+    margin:1.6rem 0 1.8rem;
   }
-
-  .card-top {
-    flex-wrap:wrap;
+  .hero .looking p{margin:0; font-size:1.05rem;}
+  .actions{display:flex; flex-wrap:wrap; gap:.75rem 1rem; align-items:center;}
+  .btn{
+    display:inline-block;
+    background:var(--blue); color:#fff;
+    text-decoration:none; font-weight:700;
+    padding:.7rem 1.1rem; border-radius:4px;
   }
+  .btn:hover{background:var(--blue-deep); color:#fff;}
+  .btn.secondary{background:transparent; color:var(--ink); border:1.5px solid var(--ink);}
+  .btn.secondary:hover{background:var(--ink); color:#fff;}
+  .contacts{margin-top:1.6rem; color:var(--muted); font-size:.98rem; display:flex; flex-wrap:wrap; gap:.4rem 1.4rem;}
 
-  .card-num {
-    order:-1;
+  /* Sections */
+  section{padding:3.5rem 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  h2{font-size:1.65rem; line-height:1.2; letter-spacing:-.01em; margin-bottom:.6rem;}
+  .lede{color:var(--muted); max-width:var(--measure); margin-bottom:2.2rem;}
+  h3{font-size:1.25rem; line-height:1.3; margin-bottom:.5rem;}
+  h4{font-size:1rem; margin-bottom:.4rem;}
+  p, li{max-width:var(--measure);}
+  ul{padding-left:1.2rem;}
+  li{margin-bottom:.4rem;}
+
+  /* Case study grid: label | content */
+  .case{display:grid; grid-template-columns:1fr; gap:0;}
+  .row{
+    display:grid; grid-template-columns:160px 1fr; gap:1.5rem;
+    padding:1.4rem 0; border-top:1px solid var(--line);
   }
-}
+  .row:first-child{border-top:none; padding-top:0;}
+  .row > h4{color:var(--muted); font-weight:400; font-size:1rem; padding-top:.1rem;}
+  .row > div > p{margin-bottom:.7rem;}
+  .row > div > p:last-child, .row > div > ul:last-child{margin-bottom:0;}
+  @media (max-width:640px){
+    .row{grid-template-columns:1fr; gap:.4rem;}
+    .row > h4{font-weight:700; color:var(--ink);}
+  }
+  .meta{color:var(--muted); font-size:.98rem; margin-bottom:1.6rem;}
+
+  .scenes{display:grid; grid-template-columns:repeat(2, 1fr); gap:1rem; margin:1.6rem 0;}
+  @media (max-width:560px){ .scenes{grid-template-columns:1fr;} }
+  .scene img{display:block; width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:4px; border:1px solid var(--line);}
+  .scene figcaption{font-size:.92rem; color:var(--muted); margin-top:.45rem;}
+  .scene figcaption b{color:var(--ink); font-weight:700;}
+
+  .video{margin:1.6rem 0; max-width:720px;}
+  .video video{display:block; width:100%; height:auto; border-radius:4px; border:1px solid var(--line); background:#000;}
+  .video figcaption{font-size:.92rem; color:var(--muted); margin-top:.45rem;}
+
+  .stats{display:flex; flex-wrap:wrap; gap:1.6rem 2.6rem; margin:.4rem 0 1.2rem;}
+  .stat b{display:block; font-size:1.9rem; line-height:1; color:var(--blue-deep); letter-spacing:-.02em;}
+  .stat span{font-size:.92rem; color:var(--muted);}
+
+  .links{display:flex; flex-wrap:wrap; gap:.6rem 1.4rem; margin-top:1.4rem;}
+  .links .todo{color:var(--muted); border-bottom:1px dashed var(--line);}
+
+  /* Projects */
+  .project{padding:1.8rem 0; border-top:1px solid var(--line);}
+  .project:first-of-type{border-top:none; padding-top:0;}
+  .project .meta{margin-bottom:.8rem;}
+  .project p{margin-bottom:.7rem;}
+
+  .compact{list-style:none; padding:0;}
+  .compact li{padding:.9rem 0; border-top:1px solid var(--line); max-width:none;}
+  .compact li:first-child{border-top:none; padding-top:0;}
+  .compact li b{display:block;}
+  .compact li span{color:var(--muted);}
+
+  /* Skills */
+  .skills{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1.6rem 2.4rem;}
+  .skills ul{list-style:none; padding:0;}
+  .skills li{margin-bottom:.3rem;}
+  .skills h4{margin-bottom:.6rem;}
+
+  .edu{list-style:none; padding:0; margin-top:2.4rem;}
+  .edu li{padding:.8rem 0; border-top:1px solid var(--line); max-width:none;}
+  .edu li span{color:var(--muted);}
+
+  footer{padding:2rem 0 3rem; color:var(--muted); font-size:.95rem;}
 </style>
 </head>
-
 <body>
-
 <a href="#main" class="skip-link">Skip to content</a>
 
-<!-- ===================== HERO ===================== -->
-
-<header class="hero">
-  <div class="hero-inner">
-
-    <div class="insert-coin">PRESS START</div>
-
-    <div class="hud">
-      <div>CANDIDATE <b>ALESSIA MONTALBANO</b></div>
-      <div>LIVES <b>relocating in Groningen, Netherlands</b><span class="hearts">&#9632;&#9632;&#9632;</span></div>
-      <div>MASTER'S DEGREE OBTAINED ON <b>October 15th, 2026</b></div>
-      <div>SCORE <b>109/110</b></div>
-    </div>
-
-    <div class="hero-grid">
-      <div>
-
-        <h1 class="hero-title">
-          Work at the crossing of
-          <span class="g">language</span>,
-          <span class="p">extended reality</span>,
-          and <span class="c">research design</span>.
-        </h1>
-
-        <p class="hero-sub">
-          Alessia Montalbano, Master's Degree in Digital Humanities,
-          University of Pisa. I design, build and test 3D/VR game
-          experiences on Unity (more than 1 year experience). My thesis,
-          <em>ItalianVRExperience</em>, is a complete Unity VR game for
-          absolute beginners of Italian, with speech recognition
-          integration (Whisper), an AI grammar tutor (Ollama/Mistral)
-          and a user study conducted on 15 British participants.
-        </p>
-
-        <div class="hero-meta">
-
-          <div>
-            <strong>DEVELOPED WHILE IN</strong>
-            Pisa, Italy
-          </div>
-
-          <div>
-            <strong>CONTACT</strong>
-            <a href="mailto:alessia19mont@gmail.com">alessia19mont@gmail.com</a>
-          </div>
-
-          <div>
-            <strong>LINKS</strong>
-            <a href="https://www.linkedin.com/in/halesenberg/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://github.com/halesenberg" target="_blank" rel="noopener">GitHub</a>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Pixel VR headset sprite -->
-
-      <div class="sprite-wrap" aria-hidden="true">
-        <svg class="sprite" viewBox="0 0 22 16" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
-
-          <rect x="2" y="5" width="2" height="4" fill="#2F6BFF"/>
-          <rect x="18" y="5" width="2" height="4" fill="#2F6BFF"/>
-          <rect x="4" y="3" width="14" height="2" fill="#2F6BFF"/>
-
-          <rect x="3" y="6" width="16" height="7" fill="#101A55"/>
-          <rect x="3" y="6" width="16" height="1" fill="#34E0FF"/>
-          <rect x="3" y="12" width="16" height="1" fill="#34E0FF"/>
-          <rect x="3" y="6" width="1" height="7" fill="#34E0FF"/>
-          <rect x="18" y="6" width="1" height="7" fill="#34E0FF"/>
-
-          <rect x="5" y="8" width="4" height="3" fill="#39FF14"/>
-          <rect x="13" y="8" width="4" height="3" fill="#39FF14"/>
-          <rect x="6" y="8" width="1" height="1" fill="#ffffff"/>
-          <rect x="14" y="8" width="1" height="1" fill="#ffffff"/>
-
-          <rect x="10" y="11" width="2" height="2" fill="#070B26"/>
-
-          <rect x="0" y="1" width="1" height="1" fill="#FF2BD6"/>
-          <rect x="21" y="2" width="1" height="1" fill="#FF2BD6"/>
-          <rect x="20" y="14" width="1" height="1" fill="#39FF14"/>
-          <rect x="1" y="13" width="1" height="1" fill="#34E0FF"/>
-
-        </svg>
-      </div>
-
-    </div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Alessia Montalbano, home">
+      <svg viewBox="0 0 22 16" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="2" y="5" width="2" height="4" fill="#2F6BFF"/>
+        <rect x="18" y="5" width="2" height="4" fill="#2F6BFF"/>
+        <rect x="4" y="3" width="14" height="2" fill="#2F6BFF"/>
+        <rect x="3" y="6" width="16" height="7" fill="#1B2130"/>
+        <rect x="5" y="8" width="4" height="3" fill="#F7F8FA"/>
+        <rect x="13" y="8" width="4" height="3" fill="#F7F8FA"/>
+        <rect x="10" y="11" width="2" height="2" fill="#F7F8FA"/>
+      </svg>
+      Alessia Montalbano
+    </a>
+    <nav aria-label="Sections">
+      <a href="#case-study">Case study</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
 </header>
 
-<!-- ===================== NAVIGATION ===================== -->
-
-<nav class="navstrip" aria-label="Section navigation">
-  <a href="#thesis">00 THESIS</a>
-  <a href="#decapathon">01 DECAPATHON VII</a>
-  <a href="#python">02 PYTHON</a>
-  <a href="#details">03 DETAILS</a>
-  <a href="#design">04 RESEARCH</a>
-  <a href="#ai-essay">05 AI ETHICS</a>
-  <a href="#datajourn">06 DATA JOURN.</a>
-  <a href="#mt">07 MT EVAL</a>
-  <a href="#skills">SKILLS</a>
-</nav>
-
 <main id="main">
 
-  <div class="section-label">SELECT ABOVE</div>
-
-  <h2 class="section-heading">
-    Selected work from my Master’s degree in Digital Humanities:
-    thesis, internship and course projects.
-  </h2>
-
-  <div class="grid-projects">
-
-    <!-- ============ 00 THESIS ============ -->
-
-    <div class="card boss" id="thesis">
-
-      <div class="card-top">
-        <h3>ItalianVRExperience: an immersive VR experience for situated acquisition of Italian as a second language</h3>
-        <div class="card-num">00 FINAL BOSS</div>
+  <section class="hero" id="top">
+    <div class="wrap">
+      <h1>I design, build and test <span>immersive experiences</span> that teach something.</h1>
+      <p>Master's degree in Digital Humanities (University of Pisa, 109/110) on top of a degree in foreign languages. My thesis project, ItalianVRExperience, is a complete Unity VR game that teaches Italian to absolute beginners, validated with a user study on 15 participants.</p>
+      <p>I am most useful where design, development and research meet: turning a learning goal into a scene people can act in, building it, and finding out whether it worked.</p>
+      <div class="looking">
+        <p>Looking for a first role, including internships, as an XR or learning experience designer in a studio, an immersive training company or an e-learning team. Based in Pisa, relocating to Groningen, Netherlands.</p>
       </div>
-
-      <div class="tag-row">
-        <span class="tag lab">Completed 2026</span>
-        <span class="tag">Unity 6 / C#</span>
-        <span class="tag">Meta Quest 2</span>
-        <span class="tag cy">Whisper ASR</span>
-        <span class="tag cy">Ollama / Mistral</span>
-        <span class="tag">VR-CALL</span>
-        <span class="tag coral">Design-Based Research</span>
+      <div class="actions">
+        <a class="btn" href="#case-study">Read the case study</a>
+        <a class="btn secondary" href="cv/Alessia_Montalbano_CV.pdf" download>Download CV</a>
       </div>
-
-      <p>
-        Master's thesis in Digital Humanities (supervisor Prof. Marcello
-        Carrozzino, co-supervisor Prof. Mirko Tavosanis). A VR game
-        experience for adult English speakers with no prior knowledge
-        of Italian. The player arrives at the imaginary town of
-        Bellavalle and has to use Italian to get around: the language
-        is never the subject of an exercise, it is the tool for solving
-        real situations. The syllabus is a survival A1 repertoire built
-        from the Profilo della lingua italiana, with the focus on spoken
-        production.
-      </p>
-
-      <p>
-        Implementation took place as a visiting student at the Institute
-        of Mechanical Intelligence, Scuola Superiore Sant'Anna, Pisa.
-      </p>
-
-      <div class="scenes">
-
-        <div class="scene">
-          <img src="img/stazione1.jpg" alt="Station scene: the ticket inspector on the train" loading="lazy">
-          <b>01 STATION</b>
-          Onboarding on the train. Hand your ticket to the inspector, physically.
-        </div>
-
-        <div class="scene">
-          <img src="img/vicina.jpg" alt="Neighbourhood scene: Lina, the neighbour" loading="lazy">
-          <b>02 NEIGHBOURHOOD</b>
-          Speak to Lina, the neighbour. Name capture by voice, subtitles on.
-        </div>
-
-        <div class="scene">
-          <img src="img/baristaelistenandrepeat.jpg" alt="Bar scene: ordering at the counter" loading="lazy">
-          <b>03 BAR</b>
-          Order at the counter with plausible distractors, no translation, listen-and-repeat labels.
-        </div>
-
-        <div class="scene">
-          <img src="img/giradischi.jpg" alt="Home scene: living room with the record player" loading="lazy">
-          <b>04 HOME</b>
-          Free exploration of descriptive vocabulary, plus a record player with an animated song transcription.
-        </div>
-
+      <div class="contacts" id="contact">
+        <a href="mailto:alessia19mont@gmail.com">alessia19mont@gmail.com</a>
+        <a href="https://www.linkedin.com/in/halesenberg/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/halesenberg" target="_blank" rel="noopener">GitHub</a>
       </div>
-
-      <p><strong>What I built</strong></p>
-
-      <ul>
-        <li>Controller-free interaction with hand tracking (XR Hands): custom gestures for locomotion, grabbing, pinch selection, inventory and push-to-talk</li>
-        <li>Fully local speech recognition with Whisper (ggml-small), tolerant text matching and a turn-taking sound cue</li>
-        <li>Grammar and vocabulary tutor driven by a local LLM (Ollama/Mistral) used only for intent extraction, with answers coming from hand-verified databases to rule out hallucinations</li>
-        <li>Dialogue system with NPC trees, an event bus, persistent game state and an automatic behavioural logger (CSV)</li>
-        <li>Environments assembled from Asset Store and Sketchfab models, with Blender fixes, Mixamo animations and ElevenLabs voices</li>
-      </ul>
-
-      <div class="video-frame">
-        <video controls preload="metadata">
-          <source src="img/Video20sec.mp4" type="video/mp4">
-          Your browser does not support video playback.
-        </video>
-        <p class="caption">GAMEPLAY | 29 SECONDS</p>
-      </div>
-
-      <p>
-        <strong>User study</strong> (15 English-speaking absolute beginners,
-        one 30 minute session, post-test only design, exploratory results):
-      </p>
-
-      <div class="scoreboard">
-
-        <div class="stat">
-          <div class="val">86%</div>
-          <div class="lbl">post-test accuracy (12.1 / 14 items)</div>
-        </div>
-
-        <div class="stat">
-          <div class="val">62%</div>
-          <div class="lbl">speech recognised at first attempt</div>
-        </div>
-
-        <div class="stat">
-          <div class="val">81%</div>
-          <div class="lbl">agreement between Whisper and a native listener</div>
-        </div>
-
-        <div class="stat">
-          <div class="val">86.7</div>
-          <div class="lbl">System Usability Scale (out of 100)</div>
-        </div>
-
-        <div class="stat">
-          <div class="val">4.36</div>
-          <div class="lbl">Slater-Usoh-Steed presence (out of 5)</div>
-        </div>
-
-      </div>
-
-      <ul>
-        <li>The best remembered formulas are the ones tied to a physical or situated action, such as handing over the ticket</li>
-        <li>Whisper keeps the dialogue going but cannot replace a human ear for pronunciation: the non-rhotic /r/ is often silently normalised to the Italian spelling</li>
-        <li>Behavioural logs complement the post-test instead of replacing it, because they measure speaking while the post-test measures recognition</li>
-      </ul>
-
-      <div class="links-row">
-        <a href="TesiAM.pdf" target="_blank" rel="noopener">Thesis PDF</a>
-        <a href="https://github.com/halesenberg/ItalianVRExperience" target="_blank" rel="noopener">GitHub repo</a>
-      </div>
-
     </div>
+  </section>
 
-    <!-- ============ 01 DECAPATHON VII ============ -->
+  <!-- ============ CASE STUDY ============ -->
+  <section id="case-study">
+    <div class="wrap">
+      <h2>ItalianVRExperience</h2>
+      <p class="lede">A VR game for Meta Quest 2 where the language is never the subject of an exercise: it is the tool for getting around an Italian town. Master's thesis, 2025 to 2026, implemented as a visiting student at the Institute of Mechanical Intelligence, Scuola Superiore Sant'Anna.</p>
+      <p class="meta">Unity 6, C#, XR Hands, Whisper, Ollama / Mistral, Blender. Supervisors: Prof. Marcello Carrozzino and Prof. Mirko Tavosanis. Design-based research.</p>
 
-    <div class="card" id="decapathon">
+      <div class="case">
+        <div class="row">
+          <h4>The problem</h4>
+          <div>
+            <p>Beginner language courses teach phrases out of context, so learners recognise words on a test and freeze when a ticket inspector actually asks for their ticket. VR can put the learner inside the situation, but most language apps in VR still look like flashcards with a 3D background.</p>
+          </div>
+        </div>
 
-      <div class="card-top">
-        <h3>Decapathon VII: 3D Game Development</h3>
-        <div class="card-num">01</div>
+        <div class="row">
+          <h4>Who it is for</h4>
+          <div>
+            <p>Adult English speakers with no prior Italian. The syllabus is a survival A1 repertoire built from the Profilo della lingua italiana, with the focus on speaking rather than reading.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <h4>The design</h4>
+          <div>
+            <p>The player arrives in Bellavalle, an imaginary Italian town, and has to use Italian to solve four everyday situations. Each scene teaches a small set of formulas through an action the player physically performs.</p>
+            <div class="scenes">
+              <figure class="scene"><img src="img/stazione1.jpg" alt="Station scene: the ticket inspector on the train" loading="lazy"><figcaption><b>Station.</b> Onboarding on the train. The player hands the ticket to the inspector with their own hand.</figcaption></figure>
+              <figure class="scene"><img src="img/vicina.jpg" alt="Neighbourhood scene: Lina, the neighbour" loading="lazy"><figcaption><b>Neighbourhood.</b> Meeting Lina, the neighbour. The game captures the player's name by voice, subtitles on.</figcaption></figure>
+              <figure class="scene"><img src="img/baristaelistenandrepeat.jpg" alt="Bar scene: ordering at the counter" loading="lazy"><figcaption><b>Bar.</b> Ordering at the counter with plausible distractors, no translation, listen-and-repeat labels.</figcaption></figure>
+              <figure class="scene"><img src="img/giradischi.jpg" alt="Home scene: living room with the record player" loading="lazy"><figcaption><b>Home.</b> Free exploration of descriptive vocabulary, plus a record player with an animated song transcription.</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <h4>Decisions that mattered</h4>
+          <div>
+            <ul>
+              <li><strong>No controllers.</strong> Hand tracking with custom gestures for moving, grabbing, selecting, inventory and push-to-talk, so that handing over a ticket feels like handing over a ticket.</li>
+              <li><strong>Speech recognition runs locally.</strong> Whisper (ggml-small) on device, with tolerant text matching and a sound cue for turn-taking, so the dialogue keeps going even when pronunciation is off.</li>
+              <li><strong>The AI tutor cannot make things up.</strong> A local LLM (Ollama / Mistral) is used only to understand what the learner is asking; the answers come from hand-verified grammar and vocabulary databases.</li>
+              <li><strong>Measure behaviour, not just answers.</strong> An automatic logger records what the player says and does (CSV), alongside a post-test.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row">
+          <h4>What I built</h4>
+          <div>
+            <p>The whole prototype: scene design and assembly (Asset Store and Sketchfab models fixed in Blender, Mixamo animations, ElevenLabs voices), the dialogue system with NPC trees and an event bus, persistent game state, the speech and tutor integration, the logger, and the study design.</p>
+            <figure class="video">
+              <video controls preload="metadata">
+                <source src="img/Video20sec.mp4" type="video/mp4">
+                Your browser does not support video playback.
+              </video>
+              <figcaption>Gameplay, 29 seconds.</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="row">
+          <h4>Results</h4>
+          <div>
+            <p>User study with 15 English-speaking absolute beginners, one 30-minute session each, post-test only, exploratory.</p>
+            <div class="stats">
+              <div class="stat"><b>86%</b><span>post-test accuracy (12.1 of 14 items)</span></div>
+              <div class="stat"><b>86.7</b><span>System Usability Scale, out of 100</span></div>
+              <div class="stat"><b>4.36</b><span>presence (Slater-Usoh-Steed), out of 5</span></div>
+              <div class="stat"><b>62%</b><span>speech recognised at first attempt</span></div>
+            </div>
+            <ul>
+              <li>The best remembered formulas were the ones tied to a physical action, such as handing over the ticket.</li>
+              <li>Whisper keeps the conversation going but is not a pronunciation judge: the non-rhotic /r/ is often silently normalised to the Italian spelling. Agreement with a native listener was 81%.</li>
+              <li>Behavioural logs and the post-test measure different things (speaking versus recognising), so they complement each other rather than replace each other.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row">
+          <h4>What I would do next</h4>
+          <div>
+            <p>A pre-test and a control group, a pronunciation feedback layer that does not rely on Whisper alone, and more scenes built on the same dialogue system, which was designed to take new content without new code.</p>
+          </div>
+        </div>
       </div>
 
-      <div class="tag-row">
-        <span class="tag lab">Unity</span>
-        <span class="tag">3D Development</span>
-        <span class="tag">Game Design</span>
-        <span class="tag cy">FBX / 3D Assets</span>
-        <span class="tag coral">Animation</span>
+      <div class="links">
+        <a href="TesiAM.pdf" target="_blank" rel="noopener">Thesis (PDF)</a>
+        <a href="https://github.com/halesenberg/ItalianVRExperience" target="_blank" rel="noopener">Source code on GitHub</a>
+        <span class="todo">Playable build for Quest 2: coming soon</span>
       </div>
-
-      <p>
-        A 3D game development project built in Unity, inspired by
-        Decapathon VII, a fictional video game featured in the animated
-        series *BoJack Horseman*. The project reinterprets the original
-        game's Tetris-inspired mechanics and combines them with the
-        Viking imagery of its cover to create a new game concept.
-        The story follows a Viking who unexpectedly transforms into
-        a Tetris-shaped block and becomes trapped inside the game world.
-        The player's goal is to complete the levels to help him escape.
-        The project involved designing and assembling the 3D game
-        environment, integrating character models, textures and
-        animations, and developing the game mechanics and level
-        progression in Unity.
-      </p>
-
-      <p><strong>Development</strong></p>
-
-      <ul>
-        <li>Integration, configuration and optimisation of 3D models and FBX assets, including mesh fixes in Blender</li>
-        <li>Character customisation, including Warrior textures and materials edited in Blender, and animations integrated from Mixamo</li>
-        <li>Unity scene assembly, environment setup and management of the project hierarchy</li>
-        <li>C# scripting for gameplay mechanics, player interactions and level progression</li>
-        <li>Asset organisation and Git-based version control using GitHub</li>
-      </ul>
-
-      <!-- Tutte le immagini sono nella stessa griglia -->
-
-      <div class="scenes">
-
-        <div class="scene">
-          <img src="img/menu.jpg" alt="Decapathon VII menu screenshot" loading="lazy">
-          <b>01 GAME MENU</b>
-          Interactive menu and hierarchy.
-        </div>
-
-        <div class="scene">
-          <img src="img/gameplay1.jpg" alt="Decapathon VII gameplay screenshot 1" loading="lazy">
-          <b>02 GAMEPLAY</b>
-          Character and environment interaction.
-        </div>
-
-        <div class="scene">
-          <img src="img/gameplay2.jpg" alt="Decapathon VII gameplay screenshot 2" loading="lazy">
-          <b>03 GAMEPLAY</b>
-          Character and environment interaction.
-        </div>
-
-        <div class="scene">
-          <img src="img/gameplay3.jpg" alt="Decapathon VII gameplay screenshot 3" loading="lazy">
-          <b>04 GAMEPLAY</b>
-          In-game view (first level).
-        </div>
-
-        <div class="scene">
-          <img src="img/gameplay4.jpg" alt="Decapathon VII gameplay screenshot 4" loading="lazy">
-          <b>05 GAMEPLAY</b>
-          In-game view (second level).
-        </div>
-
-        <div class="scene">
-          <img src="img/gameplay5.jpg" alt="Decapathon VII gameplay screenshot 5" loading="lazy">
-          <b>06 GAMEPLAY</b>
-          Gameplay ending.
-        </div>
-
-      </div>
-
-      <div class="video-frame">
-        <video controls preload="metadata">
-          <source src="img/video.mp4" type="video/mp4">
-          Your browser does not support video playback.
-        </video>
-        <p class="caption">GAMEPLAY | DECAPATHON VII</p>
-      </div>
-
-      <div class="links-row">
-        <a href="https://github.com/halesenberg/DecapathonVII-v.1" target="_blank" rel="noopener">
-          GitHub repo
-        </a>
-      </div>
-
     </div>
+  </section>
 
-    <!-- ============ 02 PYTHON ============ -->
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects">
+    <div class="wrap">
+      <h2>Selected projects</h2>
+      <p class="lede">Work from my master's degree that shows the other sides of the same job: content design, user research, data and language.</p>
 
-    <div class="card" id="python">
+      <article class="project">
+        <h3>Decapathon VII: a 3D puzzle game built for fun</h3>
+        <p class="meta">Unity, C#, Blender, Mixamo, GitHub. Personal fan project inspired by the fictional game in the animated series BoJack Horseman.</p>
+        <p>The original joke game is a Tetris-like with a Viking on the cover, so I took both literally: a Viking unexpectedly turns into a Tetris-shaped block and gets trapped inside the game, and the player completes the levels to get him out. I designed and assembled the 3D environment, adapted the character (textures and materials edited in Blender, animations from Mixamo), fixed FBX meshes, and wrote the gameplay, player interaction and level progression in C#.</p>
+        <div class="scenes">
+          <figure class="scene"><img src="img/menu.jpg" alt="Decapathon VII: game menu" loading="lazy"><figcaption><b>Menu.</b> Interactive menu and scene hierarchy.</figcaption></figure>
+          <figure class="scene"><img src="img/gameplay3.jpg" alt="Decapathon VII: first level" loading="lazy"><figcaption><b>First level.</b> In-game view.</figcaption></figure>
+          <figure class="scene"><img src="img/gameplay4.jpg" alt="Decapathon VII: second level" loading="lazy"><figcaption><b>Second level.</b> In-game view.</figcaption></figure>
+          <figure class="scene"><img src="img/gameplay5.jpg" alt="Decapathon VII: ending" loading="lazy"><figcaption><b>Ending.</b> The Viking gets out.</figcaption></figure>
+        </div>
+        <figure class="video">
+          <video controls preload="metadata">
+            <source src="img/video.mp4" type="video/mp4">
+            Your browser does not support video playback.
+          </video>
+          <figcaption>Gameplay.</figcaption>
+        </figure>
+        <div class="links"><a href="https://github.com/halesenberg/DecapathonVII-v.1" target="_blank" rel="noopener">Source code on GitHub</a></div>
+      </article>
 
-      <div class="card-top">
-        <h3>Digital pantry manager: Python OOP &amp; GUI</h3>
-        <div class="card-num">02</div>
-      </div>
+      <article class="project">
+        <h3>Course content for an Erasmus+ project on AI and sustainable design</h3>
+        <p class="meta">DETAILLs Living Lab, University of Pisa, March to July 2025, 150-hour internship, supervisor Prof. Filippo Chiarello</p>
+        <p>The <a href="https://www.detaills.eu/" target="_blank" rel="noopener">DETAILLs</a> consortium (Pisa, Zagreb, Salamanca) was building a curriculum on AI-driven sustainable design. I produced the actual course content for what has since become the university course Artificial Intelligence for Sustainability: video lectures, infographics and interactive Tableau maps integrated into the e-learning platform, grounded in a literature review on serious games, AI and sustainable design. Weekly seminars with the partners, in English, with Moodle and GitHub as the shared tools.</p>
+        <div class="links"><a href="https://www.detaills.eu/artificial-intelligence-in-sustainable-design/" target="_blank" rel="noopener">Project site</a></div>
+      </article>
 
-      <div class="tag-row">
-        <span class="tag lab">Python</span>
-        <span class="tag">OOP</span>
-        <span class="tag">Tkinter GUI</span>
-      </div>
+      <article class="project">
+        <h3>User research for emerging musicians: a desirability and feasibility study</h3>
+        <p class="meta">Project Design and Management for Data Science, 2024, with M. Radojicic</p>
+        <p>Starting from the visibility problem of emerging musicians, we ran a full cycle: interviews and a survey, five personas with empathy maps, need prioritisation with a scoring matrix, then three candidate solutions validated by pretotyping. An A/B test of physical versus digital concert postcards, read through the Fogg Behaviour Model and an Ishikawa analysis, pointed to digital postcards with QR-linked content as the highest-payoff, lowest-difficulty option.</p>
+        <div class="links">
+          <a href="ProjectDesignandManagementforDataScience.pdf" target="_blank" rel="noopener">Project report (PDF)</a>
+          <a href="Alessia_Montalbano_Now-Wow-How Matrix.pdf" target="_blank" rel="noopener">Personal report (PDF)</a>
+        </div>
+      </article>
 
-      <p>
-        Two assignments for the Programming and Data Analysis course,
-        evolving from a procedural implementation into a fully
-        object-oriented system with a graphical interface.
-      </p>
-
-      <ul>
-        <li><strong>Assignment 2:</strong> procedural pantry management: creating, adding, and removing ingredients, calorie and cost calculation, file read/write, with automated tests and explicit exception handling (<code>TypeError</code>, <code>ValueError</code>, <code>KeyError</code>)</li>
-        <li><strong>Assignment 3:</strong> refactored into classes (<code>Dispensa</code>, <code>Ingrediente</code>, <code>Ricetta</code>) with dunder methods (<code>__eq__</code>, <code>__str__</code>, <code>__add__</code>) and a Tkinter GUI for interactive ingredient and recipe management</li>
-      </ul>
-
-      <div class="specimen">
-        <span class="scomment"># ricetta.py, operator overloading example</span><br>
-        <span class="sline">def __add__(self, altroingredientequant):</span><br>
-        &nbsp;&nbsp;<span class="sline">if type(altroingredientequant) is not IngredienteQuantita:</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="sline">raise TypeError("the ingredient is not of the correct type")</span><br>
-        &nbsp;&nbsp;<span class="sline">...</span><br>
-        &nbsp;&nbsp;<span class="sline">return self</span>
-      </div>
-
-      <div class="links-row">
-        <a href="https://github.com/halesenberg/PythonProjects" target="_blank" rel="noopener">GitHub repo</a>
-      </div>
-
-    </div>
-
-    <!-- ============ 03 DETAILLS INTERNSHIP ============ -->
-
-    <div class="card" id="details">
-
-      <div class="card-top">
-        <h3>Course content design: DETAILLs Living Lab</h3>
-        <div class="card-num">03</div>
-      </div>
-
-      <div class="tag-row">
-        <span class="tag lab">Instructional design</span>
-        <span class="tag">Tableau</span>
-        <span class="tag coral">Erasmus+ project</span>
-      </div>
-
-      <p>
-        150-hour internship (Mar to Jul 2025) at the
-        <a href="https://www.detaills.eu/" target="_blank" rel="noopener">DETAILLs Living Lab</a>,
-        University of Pisa, an Erasmus+ project (DEsign Tools of
-        Artificial Intelligence in Sustainability Living LabS) building
-        curriculum and training materials on AI-driven sustainable
-        design, under the supervision of Prof. Filippo Chiarello.
-      </p>
-
-      <p>
-        Beyond the literature review and seminar work, the core
-        deliverable was building actual course content for what has
-        since become a university-level course: video lectures,
-        infographics, interactive elements, and interactive maps built
-        in Tableau, the same tool later applied to the data journalism
-        project below.
-      </p>
-
-      <ul>
-        <li>Researched and structured pedagogical content on serious games, AI, and sustainable design for the course Artificial Intelligence for Sustainability (Università di Pisa), combining literature review (top-down/bottom-up approaches) with tools including Moodle, GitHub, Tableau, and Scimago</li>
-        <li>Produced video lectures and infographics translating technical AI/sustainability concepts into accessible course material</li>
-        <li>Built interactive Tableau maps and elements integrated into the course's e-learning platform</li>
-        <li>Took part in weekly lab seminars with project partners across the DETAILLs consortium (Pisa, Zagreb, Salamanca)</li>
-      </ul>
-
-      <div class="links-row">
-        <a href="https://www.detaills.eu/artificial-intelligence-in-sustainable-design/" target="_blank" rel="noopener">DETAILLs project site</a>
-      </div>
-
-    </div>
-
-    <!-- ============ 04 USER RESEARCH ============ -->
-
-    <div class="card" id="design">
-
-      <div class="card-top">
-        <h3>PD&amp;M Desirability &amp; Feasibility Report</h3>
-        <div class="card-num">04</div>
-      </div>
-
-      <div class="tag-row">
-        <span class="tag lab">Design thinking</span>
-        <span class="tag">User research</span>
-        <span class="tag">Project design</span>
-      </div>
-
-      <p>
-        Duo project for Project Design and Management for Data Science
-        with M. Radojicic, tackling the visibility problem faced by
-        emerging musicians in a $26B global market, structured across
-        a full Desirability and Feasibility cycle.
-      </p>
-
-      <ul>
-        <li>User research: brainstorming, role-storming, 5 Whys root-cause analysis, interviews, a 10-question survey</li>
-        <li>Five user personas mapped via empathy maps (vinyl collectors, songwriters, emerging musicians, independent label owners, hidden-gem seekers), evaluated with SWOT analysis and Maslow's hierarchy</li>
-        <li>Need prioritisation via a number/importance/confidence scoring matrix across all five user groups</li>
-        <li>Feasibility phase: technology ideation (How-Now-Wow-Huh?-Ciao matrix, fishbone diagram, Google Trends and dataset analysis), narrowed to three candidate solutions</li>
-        <li>Validated solutions through real pretotyping: A/B testing physical vs. digital concert postcards, user feedback collection, assessed with the Fogg Behaviour Model and an Ishikawa 5M analysis</li>
-        <li>Final solution (digital concert postcards with QR-linked content) selected via Pickcharts and NUF Test scoring as the highest-payoff, lowest-difficulty option</li>
-      </ul>
-
-      <div class="links-row">
-        <a href="ProjectDesignandManagementforDataScience.pdf" target="_blank" rel="noopener">Project report's PDF</a>
-        <a href="Alessia_Montalbano_Now-Wow-How Matrix.pdf" target="_blank" rel="noopener">Personal report's PDF</a>
-      </div>
-
-    </div>
-
-    <!-- ============ 05 AI ESSAY ============ -->
-
-    <div class="card" id="ai-essay">
-
-      <div class="card-top">
-        <h3>Unveiling the Complexities of Artificial Intelligence</h3>
-        <div class="card-num">05</div>
-      </div>
-
-      <div class="tag-row">
-        <span class="tag lab">AI ethics</span>
-        <span class="tag">Algorithmic bias</span>
-        <span class="tag">Critical essay</span>
-      </div>
-
-      <p>
-        A critical essay on the structural limits of AI systems in
-        making ethical and moral decisions. The argument moves through
-        DARPA's three "waves" of AI, the problem of opaque "black box"
-        systems, and a review of documented cases of algorithmic bias
-        in gender classification and language models.
-      </p>
-
-      <ul>
-        <li>Analysis of bias sources across the algorithmic chain (training data, algorithmic focus, output)</li>
-        <li>Critical discussion of AI anthropomorphisation and "ethics washing" narratives in the tech industry</li>
-        <li>Extensive academic bibliography (Hinton &amp; Salakhutdinov, Scharre et al., DARPA, JSTOR sources)</li>
-      </ul>
-
-      <p class="note">
-        Relevant to research contexts involving behavioural modelling and explainable AI (XAI).
-      </p>
-
-      <div class="links-row">
-        <a href="ArtificialIntelligenceEssay.pdf" target="_blank" rel="noopener">Essay's PDF</a>
-      </div>
-
-    </div>
-
-    <!-- ============ 06 DATA JOURNALISM ============ -->
-
-    <div class="card" id="datajourn">
-
-      <div class="card-top">
+      <article class="project">
         <h3>Oggi a tavola, dieta mediterranea</h3>
-        <div class="card-num">06</div>
-      </div>
+        <p class="meta">Data journalism, Tableau, 2024, with G. Fidone (data) and V. Galli (graphics)</p>
+        <p>A multimedia article that takes apart the idea of the Mediterranean diet as an automatically healthy model, using IHME data on dietary risk factors in Italy. Interactive Tableau dashboards embedded in the page, an original interview with a nutrition expert, and the historical framing from Ancel Keys to today's national marketing.</p>
+        <div class="links"><a href="sito-dj/sito-dj.html" target="_blank" rel="noopener">Read the article</a></div>
+      </article>
 
-      <div class="tag-row">
-        <span class="tag lab">Data journalism</span>
-        <span class="tag">Tableau</span>
-        <span class="tag">Group work</span>
-      </div>
+      <article class="project">
+        <h3>How good is machine translation from Russian to Italian?</h3>
+        <p class="meta">Italian Linguistics, 2025, Prof. Mirko Tavosanis</p>
+        <p>Google Translate, DeepL and ChatGPT-4 compared on an institutional news text, with automatic metrics (BLEU, F-Measure, TER) and a blind qualitative grid covering semantic fidelity, register and formal correctness. ChatGPT-4 came out most natural in style, DeepL most balanced in terminology, Google Translate penalised by literal calques.</p>
+        <div class="links"><a href="LinguisticaItalianaIIAlessiaMontalbano.pdf" target="_blank" rel="noopener">Report (PDF)</a></div>
+      </article>
 
-      <p>
-        Data journalism project built with G. Fidone (Data analysis)
-        and V. Galli (Graphics). Development, research and writing of
-        a multimedia article critically dismantling the myth of the
-        Mediterranean diet as an automatically healthy model, grounded
-        in IHME data on dietary risk factors in Italy.
-      </p>
-
-      <ul>
-        <li>Interactive Tableau dashboards embedded directly in the page</li>
-        <li>Original interview with a nutrition expert</li>
-        <li>Historical framing (Ancel Keys, 1950s) and critique of national marketing narratives</li>
+      <h3 style="margin-top:2.6rem;">Other work</h3>
+      <ul class="compact">
+        <li><b>Digital pantry manager</b><span>Python, from a procedural script to an object-oriented system with a Tkinter interface, automated tests and explicit exception handling. </span><a href="https://github.com/halesenberg/PythonProjects" target="_blank" rel="noopener">Code on GitHub</a></li>
+        <li><b>Unveiling the complexities of artificial intelligence</b><span>Critical essay on the limits of AI systems in ethical decisions: DARPA's three waves, black-box opacity, documented cases of algorithmic bias. </span><a href="ArtificialIntelligenceEssay.pdf" target="_blank" rel="noopener">Essay (PDF)</a></li>
       </ul>
-
-      <div class="links-row">
-        <a href="sito-dj/sito-dj.html" target="_blank" rel="noopener">DJ Project's overview</a>
-      </div>
-
     </div>
+  </section>
 
-    <!-- ============ 07 MT EVALUATION ============ -->
-
-    <div class="card" id="mt">
-
-      <div class="card-top">
-        <h3>Semi-automatic evaluation of machine translation systems</h3>
-        <div class="card-num">07</div>
+  <!-- ============ SKILLS ============ -->
+  <section id="skills">
+    <div class="wrap">
+      <h2>Skills</h2>
+      <p class="lede">What I can do today, grouped by the part of the job it belongs to.</p>
+      <div class="skills">
+        <div>
+          <h4>XR and 3D</h4>
+          <ul>
+            <li>Unity 6: scenes, interaction, UI, VR builds</li>
+            <li>XR Hands, OpenXR, Meta Quest 2</li>
+            <li>C# for game logic, with AI-assisted development</li>
+            <li>Blender (intermediate)</li>
+            <li>Whisper and Ollama, running locally</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Design and research</h4>
+          <ul>
+            <li>Learning experience design</li>
+            <li>Design-based research</li>
+            <li>User studies: SUS, presence, post-tests</li>
+            <li>Interviews, surveys, personas, A/B tests</li>
+            <li>Perceptual evaluation of speech recognition</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Content and data</h4>
+          <ul>
+            <li>Video lectures, infographics, e-learning content</li>
+            <li>Tableau dashboards and maps</li>
+            <li>Python (procedural and object-oriented)</li>
+            <li>HTML, CSS, basic JavaScript</li>
+            <li>Adobe Creative Suite, Google Analytics</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Languages</h4>
+          <ul>
+            <li>Italian, native</li>
+            <li>English, C1</li>
+            <li>Russian, B2</li>
+            <li>French, A2</li>
+            <li>Dutch, beginner, learning</li>
+          </ul>
+        </div>
       </div>
 
-      <div class="tag-row">
-        <span class="tag lab">NLP</span>
-        <span class="tag">Computational linguistics</span>
-        <span class="tag">RU &gt; IT</span>
-      </div>
-
-      <p>
-        Report for the Italian Linguistics course (Prof. Mirko Tavosanis)
-        comparing Google Translate, DeepL, and ChatGPT-4 on a
-        Russian-to-Italian translation of an institutional news text,
-        combining automatic metrics (BLEU, F-Measure, TER) with a
-        three-dimension qualitative scoring grid.
-      </p>
-
-      <ul>
-        <li>Blind evaluation conducted independently on anonymised translations, to reduce cognitive bias</li>
-        <li>Scoring grid covering semantic fidelity, register/genre adequacy, and formal correctness</li>
-        <li>Result: ChatGPT-4 most natural stylistically, DeepL most balanced terminologically, Google Translate penalised by literal calques</li>
+      <ul class="edu">
+        <li><b>Master's degree in Digital Humanities</b>, University of Pisa, 2026, 109/110 <span>(Informatica Umanistica, LM-43)</span></li>
+        <li><b>Bachelor's degree in Foreign Languages and Literatures</b>, University of Pisa, 2021, 100/110 <span>(Russian, English, French)</span></li>
       </ul>
-
-      <div class="links-row">
-        <a href="LinguisticaItalianaIIAlessiaMontalbano.pdf" target="_blank" rel="noopener">Essay's PDF</a>
-      </div>
-
     </div>
-
-  </div><!-- end grid-projects -->
-
-  <!-- ============ SKILLS & CERTIFICATIONS ============ -->
-
-  <div id="skills">
-
-    <div class="section-label">INVENTORY</div>
-    <h2 class="section-heading">Skills &amp; certifications</h2>
-
-    <div class="skills-wrap">
-
-      <div class="skill-card">
-        <h4>PROGRAMMING</h4>
-        <ul>
-          <li><span class="label">Python (procedural &amp; OOP)</span></li>
-          <li><span class="label">C# (Unity)</span></li>
-          <li><span class="label">JavaScript</span></li>
-          <li><span class="label">HTML / CSS</span></li>
-        </ul>
-      </div>
-
-      <div class="skill-card">
-        <h4>XR &amp; TOOLS</h4>
-        <ul>
-          <li><span class="label">Unity 6 / XR Hands / OpenXR</span></li>
-          <li><span class="label">Blender</span><span class="yr">intermediate</span></li>
-          <li><span class="label">Whisper &amp; Ollama (local AI)</span></li>
-          <li><span class="label">Tableau</span></li>
-          <li><span class="label">Adobe Creative Suite</span></li>
-          <li><span class="label">Microsoft Office</span></li>
-        </ul>
-      </div>
-
-      <div class="skill-card">
-        <h4>RESEARCH</h4>
-        <ul>
-          <li><span class="label">Design-Based Research</span></li>
-          <li><span class="label">User studies (SUS, presence)</span></li>
-          <li><span class="label">Perceptual evaluation of ASR</span></li>
-          <li><span class="label">Google Analytics</span></li>
-        </ul>
-      </div>
-
-      <div class="skill-card">
-        <h4>CERTIFICATIONS</h4>
-        <ul>
-          <li class="Unipi">
-            <span class="label">BACHELOR DEGREE Foreign Languages and Literatures</span>
-            <span class="yr">2021</span>
-          </li>
-          <li class="Unipi">
-            <span class="label">MASTER DEGREE Digital Humanities</span>
-            <span class="yr">2026</span>
-          </li>
-          <li class="expired">
-            <span class="label">Google Ads Search</span>
-            <span class="yr">2023</span>
-          </li>
-          <li class="expired">
-            <span class="label">Google Ads Measurement</span>
-            <span class="yr">2023</span>
-          </li>
-        </ul>
-
-        <p class="note">
-          Certifications reflect skills acquired through coursework in
-          Technologies for Web Marketing; both have since lapsed and
-          are listed for completeness, not as current credentials.
-        </p>
-      </div>
-
-      <div class="skill-card">
-        <h4>LANGUAGES</h4>
-        <ul>
-          <li><span class="label">Italian</span><span class="yr">native</span></li>
-          <li><span class="label">English</span><span class="yr">C1</span></li>
-          <li><span class="label">Russian</span><span class="yr">B2</span></li>
-          <li><span class="label">French</span><span class="yr">A2</span></li>
-          <li><span class="label">Dutch</span><span class="yr">beginner</span></li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
+  </section>
 
 </main>
 
-<footer class="colophon">
-  <span>Last updated: 2 November 2026</span>
-  <span class="gameover">THANK YOU FOR READING THIS</span>
+<footer>
+  <div class="wrap">
+    <span>Alessia Montalbano, last updated November 2026.</span>
+  </div>
 </footer>
-
-<script>
-  // Highlight active nav section on scroll
-
-  const links = document.querySelectorAll('.navstrip a');
-
-  const sections = [...links]
-    .map(link => document.querySelector(link.getAttribute('href')))
-    .filter(Boolean);
-
-  function onScroll() {
-    let activeIdx = 0;
-
-    sections.forEach((section, index) => {
-      if (section.getBoundingClientRect().top < 140) {
-        activeIdx = index;
-      }
-    });
-
-    links.forEach(link => link.classList.remove('active'));
-
-    if (links[activeIdx]) {
-      links[activeIdx].classList.add('active');
-    }
-  }
-
-  document.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
-</script>
 
 </body>
 </html>
