@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alessia Montalbano | XR designer</title>
+<title>Alessia Montalbano | creative designer</title>
 <meta name="description" content="Alessia Montalbano, creative designer. Portfolio: ItalianVRExperience (Unity VR game for learning Italian), 3D games, mobile apps, UI/UX designs, research and content design work.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -134,6 +134,16 @@
   .project .meta{margin-bottom:.8rem;}
   .project p{margin-bottom:.7rem;}
 
+  /* Project with a portrait (9:16) video beside the text */
+  .project-split{display:grid; grid-template-columns:240px 1fr; gap:1.5rem 2.2rem; align-items:start; margin:.4rem 0 1.6rem;}
+  .project-split .video{margin:0; max-width:240px;}
+  .project-split .video video{aspect-ratio:9/16; object-fit:contain; border-radius:14px;}
+  .project-split .links{margin-top:1.2rem;}
+  @media (max-width:640px){
+    .project-split{grid-template-columns:1fr;}
+    .project-split .video{margin:0 auto; max-width:260px;}
+  }
+
   .compact{list-style:none; padding:0;}
   .compact li{padding:.9rem 0; border-top:1px solid var(--line); max-width:none;}
   .compact li:first-child{border-top:none; padding-top:0;}
@@ -151,6 +161,69 @@
   .edu li span{color:var(--muted);}
 
   footer{padding:2rem 0 3rem; color:var(--muted); font-size:.95rem;}
+
+  /* Stand-out titles */
+  h2{
+    display:inline-block;
+    background:var(--tint);
+    color:var(--blue-deep);
+    padding:.2em .7em;
+    border-radius:12px;
+    margin-bottom:1.1rem;
+  }
+  .project{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:1.7rem 1.7rem 1.5rem;
+    margin-bottom:1.3rem;
+  }
+  .project:first-of-type{border-top:1px solid var(--line); padding-top:1.7rem;}
+  .project h3, #projects .wrap > h3{
+    display:flex;
+    gap:.65rem;
+    font-size:1.3rem;
+    margin-bottom:.5rem;
+  }
+  .project h3::before, #projects .wrap > h3::before{
+    content:"";
+    flex:none;
+    width:6px;
+    border-radius:3px;
+    background:var(--bar, var(--blue));
+  }
+  .compact{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:1.1rem 1.5rem;
+  }
+
+  /* Palette: blue + fuchsia + lime + orange (colours only) */
+  :root{
+    --fuchsia:#D4128A; --fuchsia-ink:#A00E6B; --fuchsia-tint:#FFE3F5;
+    --lime-bar:#9BD100; --lime-tint:#EEFFB0; --lime-ink:#3F5200;
+    --orange:#FF7A1A; --orange-ink:#9A3E06; --orange-tint:#FFE8D6;
+  }
+  .hero h1 span{color:var(--fuchsia-ink);}
+  .hero .looking{background:var(--blue-tint); border-left-color:var(--blue);}
+  #thesis h2{background:var(--fuchsia-tint); color:var(--fuchsia-ink);}
+  #projects h2{background:var(--lime-tint); color:var(--lime-ink);}
+  #skills h2{background:var(--orange-tint); color:var(--orange-ink);}
+  .project:nth-of-type(4n+1){--bar:var(--fuchsia);}
+  .project:nth-of-type(4n+2){--bar:var(--lime-bar);}
+  .project:nth-of-type(4n+3){--bar:var(--orange);}
+  .stat:nth-child(2) b{color:var(--fuchsia-ink);}
+  .stat:nth-child(3) b{color:var(--orange-ink);}
+  .skills > div:nth-child(1) h4{color:var(--blue-deep);}
+  .skills > div:nth-child(2) h4{color:var(--fuchsia-ink);}
+  .skills > div:nth-child(3) h4{color:var(--orange-ink);}
+  .skills > div:nth-child(4) h4{color:var(--lime-ink);}
+  @media (max-width:560px){
+    .project{padding:1.25rem 1.1rem;}
+    .project:first-of-type{padding-top:1.25rem;}
+    .compact{padding:1rem 1.1rem;}
+  }
 </style>
 </head>
 <body>
@@ -183,11 +256,11 @@
 
   <section class="hero" id="top">
     <div class="wrap">
-      <h1>I design, build and test <span> creative experiences</span> to serve a purpose and learn more and more everyday.</h1>
+      <h1>I design, build and test <span>creative experiences</span> to serve a purpose and learn more and more every day.</h1>
       <p>Master's degree in Digital Humanities (University of Pisa, 109/110) on top of a degree in foreign languages. My thesis project, ItalianVRExperience, is a complete Unity VR game that teaches Italian to absolute beginners, validated with a user study on 15 participants.</p>
       <p>I am most useful where design, development and research meet: turning a learning goal into a scene people can act in, building it, and finding out whether it worked.</p>
       <div class="looking">
-        <p>Looking for a entry level/junior role.</p>
+        <p>Looking for an entry level/junior role.</p>
       </div>
       <div class="actions">
         <a class="btn" href="#thesis">Read about the thesis</a>
@@ -305,13 +378,30 @@
       <article class="project">
         <h3>Job Tracker: a mobile app designed in Figma and built in code</h3>
         <p class="meta">Figma, HTML, CSS, JavaScript, Claude Code. Personal project, November 2026.</p>
-        <p>When you apply to many jobs, the status of each one ends up scattered across emails, tabs and notes. I wanted one small, mobile place that shows every application, its status and what to do next, with a first screen that greets the user and leads them to start tracking a first application.</p>
-        <p>In Figma I started from a simple design system: variables for colour, spacing and radius, text styles, and components with variants such as the status chip. The four screens are built from those components. The welcome cover collapses into the list header with a single swipe up, so the app opens on a greeting and a one line summary and moves into the list in one gesture. I removed the tab bar because it duplicated the Add application button.</p>
-        <p>I then built the prototype in code with Claude Code. The Figma variables are exported as CSS custom properties, so design and code share the same tokens. It works as a real app: you can add an application, choose its status, change it later and keep notes, and everything is saved in the browser. Accessibility was part of the brief: labelled fields, full keyboard use, a tap as an alternative to the swipe, and support for reduced motion. The data lives only in the browser, so a backend would be the next step.</p>
-        <div class="links">
-          <a href="https://halesenberg.github.io/PersonalJobTracker/" target="_blank" rel="noopener">Try the app</a>
-          <span class="todo">Figma prototype: link coming soon</span>
-          <a href="https://github.com/halesenberg/PersonalJobTracker" target="_blank" rel="noopener">Source code on GitHub</a>
+        <div class="project-split">
+          <figure class="video">
+            <video controls preload="metadata">
+              <source src="img/jobtracker-demo.mp4" type="video/mp4">
+              Your browser does not support video playback.
+            </video>
+            <figcaption>The app in use: first launch, adding an application and changing its status.</figcaption>
+          </figure>
+          <div class="project-text">
+            <p>When you apply to many jobs, the status of each one ends up scattered across emails, tabs and notes. I wanted one small, mobile place that shows every application, its status and what to do next, with a first screen that greets the user and leads them to start tracking a first application.</p>
+            <p>In Figma I started from a simple design system: variables for colour, spacing and radius, text styles, and components with variants such as the status chip. The four screens are built from those components. The welcome cover collapses into the list header with a single swipe up, so the app opens on a greeting and a one line summary and moves into the list in one gesture. I removed the tab bar because it duplicated the Add application button.</p>
+            <p>I then built the prototype in code with Claude Code. The Figma variables are exported as CSS custom properties, so design and code share the same tokens. It works as a real app: you can add an application, choose its status, change it later and keep notes, and everything is saved in the browser. Accessibility was part of the brief: labelled fields, full keyboard use, a tap as an alternative to the swipe, and support for reduced motion. The data lives only in the browser, so a backend would be the next step.</p>
+            <div class="links">
+              <a href="https://halesenberg.github.io/PersonalJobTracker/" target="_blank" rel="noopener">Try the app</a>
+              <a href="https://www.figma.com/proto/m8b2HBnkFms4MT0FLqw37j/Personal-Job-Tracker?node-id=10-2&amp;t=oSWNLzD0Y968qn3Y-1" target="_blank" rel="noopener">Figma prototype</a>
+              <a href="https://github.com/halesenberg/PersonalJobTracker" target="_blank" rel="noopener">Source code on GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="scenes">
+          <figure class="scene"><img src="img/jobtracker-welcome.png" alt="Job Tracker: welcome screen with a teal cover and the text Hello there" loading="lazy"><figcaption><b>Welcome.</b> The cover collapses into the list header with a swipe up.</figcaption></figure>
+          <figure class="scene"><img src="img/jobtracker-list.png" alt="Job Tracker: list of four applications with colour coded status chips" loading="lazy"><figcaption><b>Applications.</b> Four statuses, one chip component with variants.</figcaption></figure>
+          <figure class="scene"><img src="img/jobtracker-detail.png" alt="Job Tracker: application detail with a status selector and notes" loading="lazy"><figcaption><b>Detail.</b> Status can be changed at any time, notes are saved as you type.</figcaption></figure>
+          <figure class="scene"><img src="img/jobtracker-design-system.png" alt="Job Tracker: design system page with components and variables" loading="lazy"><figcaption><b>Design system.</b> Variables and components shared by design and code.</figcaption></figure>
         </div>
       </article>
 
