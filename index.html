@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alessia Montalbano | XR designer</title>
-<meta name="description" content="Alessia Montalbano designs, builds and tests immersive learning experiences. Portfolio: ItalianVRExperience, a Unity VR game for learning Italian, plus research and content design work.">
+<meta name="description" content="Alessia Montalbano designs, builds and tests immersive learning experiences. Portfolio: ItalianVRExperience, a Unity VR game for learning Italian, plus interface design, research and content design work.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -95,7 +95,7 @@
   ul{padding-left:1.2rem;}
   li{margin-bottom:.4rem;}
 
-  /* Case study grid: label | content */
+  /* Thesis grid: label | content */
   .case{display:grid; grid-template-columns:1fr; gap:0;}
   .row{
     display:grid; grid-template-columns:160px 1fr; gap:1.5rem;
@@ -171,7 +171,7 @@
       Alessia Montalbano
     </a>
     <nav aria-label="Sections">
-      <a href="#case-study">Case study</a>
+      <a href="#thesis">Thesis</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
@@ -190,7 +190,7 @@
         <p>Looking for a first role, including internships, as an XR designer in a studio, an immersive training company or an e-learning team, or a cultural heritage institution building digital experiences.</p>
       </div>
       <div class="actions">
-        <a class="btn" href="#case-study">Read the case study</a>
+        <a class="btn" href="#thesis">Read about the thesis</a>
         <a class="btn secondary" href="cv/Alessia_Montalbano_CV.pdf" download>Download CV</a>
       </div>
       <div class="contacts" id="contact">
@@ -201,8 +201,8 @@
     </div>
   </section>
 
-  <!-- ============ CASE STUDY ============ -->
-  <section id="case-study">
+  <!-- ============ THESIS ============ -->
+  <section id="thesis">
     <div class="wrap">
       <h2>ItalianVRExperience</h2>
       <p class="lede">A VR game for Meta Quest 2 where the language is never the subject of an exercise: it is the tool for getting around an Italian town. Master's thesis, 2025 to 2026, implemented as a visiting student at the Institute of Mechanical Intelligence, Scuola Superiore Sant'Anna.</p>
@@ -300,7 +300,26 @@
   <section id="projects">
     <div class="wrap">
       <h2>Selected projects</h2>
-      <p class="lede">Work from my master's degree that shows the other sides of the same job: content design, user research, data and language.</p>
+      <p class="lede">Work from my master's degree that shows the other sides of the same job: interface design, content design, user research, data and language.</p>
+
+      <article class="project">
+        <h3>Job Tracker: a mobile app designed in Figma and built in code</h3>
+        <p class="meta">Figma, HTML, CSS, JavaScript, Claude Code. Personal project, November 2026.</p>
+        <p>When you apply to many jobs, the status of each one ends up scattered across emails, tabs and notes. I wanted one small place that shows every application, the stage it is at and what to do next, with a first screen that asks nothing from the user.</p>
+        <p>In Figma I started from a small design system: variables for colour, spacing and radius, text styles, and components with variants such as the status chip. The four screens are built from those components. The welcome cover collapses into the list header with a single swipe up, so the app opens on a greeting and a one line summary and moves into the list in one gesture. I removed the tab bar because it duplicated the Add application button.</p>
+        <p>I then built the prototype in code with Claude Code. The Figma variables are exported as CSS custom properties, so design and code share the same tokens. It works as a real app: you can add an application, choose its status, change it later and keep notes, and everything is saved in the browser. Accessibility was part of the brief: labelled fields, full keyboard use, a tap as an alternative to the swipe, and support for reduced motion. The data lives only in the browser, so a backend would be the next step.</p>
+        <div class="scenes">
+          <figure class="scene"><img src="img/jobtracker-welcome.png" alt="Job Tracker: welcome screen with a teal cover and the text Hello there" loading="lazy"><figcaption><b>Welcome.</b> The cover collapses into the list header with a swipe up.</figcaption></figure>
+          <figure class="scene"><img src="img/jobtracker-list.png" alt="Job Tracker: list of four applications with colour coded status chips" loading="lazy"><figcaption><b>Applications.</b> Four statuses, one chip component with variants.</figcaption></figure>
+          <figure class="scene"><img src="img/jobtracker-detail.png" alt="Job Tracker: application detail with a status selector and notes" loading="lazy"><figcaption><b>Detail.</b> Status can be changed at any time, notes are saved as you type.</figcaption></figure>
+          <figure class="scene"><img src="img/jobtracker-design-system.png" alt="Job Tracker: design system page with components and variables" loading="lazy"><figcaption><b>Design system.</b> Variables and components shared by design and code.</figcaption></figure>
+        </div>
+        <div class="links">
+          <a href="https://halesenberg.github.io/PersonalJobTracker/" target="_blank" rel="noopener">Try the app</a>
+          <span class="todo">Figma prototype: link coming soon</span>
+          <a href="https://github.com/halesenberg/PersonalJobTracker" target="_blank" rel="noopener">Source code on GitHub</a>
+        </div>
+      </article>
 
       <article class="project">
         <h3>Decapathon VII: a 3D puzzle game built for fun</h3>
@@ -380,6 +399,7 @@
         <div>
           <h4>Design and research</h4>
           <ul>
+            <li>Interface design in Figma: components, variables, prototyping</li>
             <li>Learning experience design</li>
             <li>Design-based research</li>
             <li>User studies: SUS, presence, post-tests</li>
